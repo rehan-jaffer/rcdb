@@ -1,0 +1,5 @@
+.row.drug-row
+  .col-lg-4
+    = link_to benzodiazepine.primary_name, benzodiazepine_path(benzodiazepine.primary_name)
+  .col-lg-5
+    = display_other_names(benzodiazepine.other_names)
