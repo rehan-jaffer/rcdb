@@ -19,6 +19,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'active_record-acts_as'
 gem 'twitter-bootstrap-rails'
 gem 'bower-rails'
+gem 'devise'
+gem 'rolify'
 
 # code quality/metric tools
 gem 'rubocop'
@@ -48,7 +50,6 @@ end
 
 group :development, :test do
 
-  gem 'devise'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'capybara'
