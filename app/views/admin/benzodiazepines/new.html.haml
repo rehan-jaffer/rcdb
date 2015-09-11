@@ -1,0 +1,35 @@
+= simple_form_for([:admin, @benzo]) do |f|
+  %h2 New Benzodiazepine
+  = f.input :primary_name
+  = f.input :description
+  = f.input :half_life
+  = f.input :onset
+  = f.input :trade_names
+  %h3 Receptor Affinities
+  = f.simple_fields_for :affinity do |affinities|
+    .col-lg-2.col-md-2
+      = affinities.input :α1, :input_html => {:g1 => "g1" }, :length => 4
+    .col-lg-2.col-md-2
+      = affinities.input :α2, :input_html => {:g1 => "g1" }
+    .col-lg-2.col-md-2
+      = affinities.input :α3, :input_html => {:g1 => "g1" }
+    .col-lg-2.col-md-2
+      = affinities.input :α4, :input_html => {:g1 => "g1" }
+    .col-lg-2.col-md-2
+      = affinities.input :α5, :input_html => {:g1 => "g1" }
+    .col-lg-2.col-md-2
+      = affinities.input :α6, :input_html => {:g1 => "g1" }
+    .col-lg-2.col-md-2
+      = affinities.input :β1, :input_html => {:g1 => "g1" }
+    .col-lg-2.col-md-2
+      = affinities.input :β2, :input_html => {:g1 => "g1" }
+    .col-lg-2.col-md-2
+      = affinities.input :β3, :input_html => {:g1 => "g1" }
+    .col-lg-2.col-md-2
+      = affinities.input :γ1, :input_html => {:g1 => "g1" }
+    .col-lg-2.col-md-2
+      = affinities.input :γ2, :input_html => {:g1 => "g1" }
+    .col-lg-2.col-md-2
+      = affinities.input :γ3, :input_html => {:g1 => "g1" }
+  = f.input :valium_equiv
+  = f.submit
