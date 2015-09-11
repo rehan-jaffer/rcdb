@@ -1,5 +1,38 @@
 %h2= @benzodiazepine.primary_name
-%h4
+%h4 
   Other names:
   = display_other_names(@benzodiazepine.other_names)
+%h4 
+  Trade names:
+  = display_trade_names(@benzodiazepine.trade_names)
 %p= @benzodiazepine.description
+%h3 Diazepam Equivalence
+%p= "1mg = #{@benzodiazepine.valium_equiv}mg"
+
+%h3 Receptor Affinity
+.row
+  %table.table-bordered.col-lg-6
+    %tr
+      %td Receptor Subtype
+      %td Binding Affinity
+    - @benzodiazepine.affinity.keys.each do |bkey|
+      %tr.receptor-row
+        %td.receptor-name.col-lg-3= bkey
+        %td.receptor-value.col-lg-3= @benzodiazepine.affinity[bkey]
+
+%h3 Search trend data
+
+= display_google_trends_graph(@benzodiazepine.primary_name)
+
+%h3 Consumer Reports
+
+= render @benzodiazepine.reports
+
+= link_to "Submit Report", "#", :class => "btn btn-primary"
+
+%h3 Papers
+= render @benzodiazepine.papers
+
+%h3 Articles
+
+%h3 Fatalities
