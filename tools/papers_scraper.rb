@@ -1,20 +1,22 @@
 require 'rss'
 require 'open-uri'
 
-@benzo = Benzodiazepine.last
+@drugs = Drug.all
 
-url = @benzo.paper_feed
+@drugs.each do |drug|
 
-open(url) do |rss|
+  open(drug.paper_feed) do |rss|
 
-  feed = RSS::Parser.parse(url)
-  feed.items.each do |item|
-    @paper = Paper.new
-    @paper.title = item.title
-    @paper.link = item.link
-    @paper.abstract = item.description
-    @paper.drug_id = @benzo.drug.id
-    @paper.save
+    feed = RSS::Parser.parse(rss)
+    feed.items.each do |item|
+      @paper = Paper.new
+      @paper.title = item.title
+      @paper.link = item.link
+      @paper.abstract = item.description
+      @paper.drug_id = drug.id
+      @paper.save
+    end
+
   end
 
 end
