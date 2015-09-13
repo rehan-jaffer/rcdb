@@ -18,6 +18,10 @@ class Admin::BenzodiazepinesController < ApplicationController
   def update
   end
 
+  def index
+    @benzos = Benzodiazepine.all
+  end
+
   def benzo_attributes
     params.require(:benzodiazepine).permit(:primary_name, :valium_equiv, :description, :half_life, :onset, affinity: Benzodiazepine.stored_attributes[:affinity])
   end
