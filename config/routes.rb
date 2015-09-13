@@ -7,8 +7,12 @@ Rails.application.routes.draw do
   resources :drugs
   root to: "home#index"
 
+  resources :static
+
   namespace :admin do
     resources :benzodiazepines
+    resources :cannabinoids
+    resource :dashboard
   end
 
 end
