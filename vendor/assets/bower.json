@@ -1,7 +1,7 @@
 {
   "name": "dsl-generated dependencies",
   "dependencies": {
-    "bootstrap": "latest",
-    "underscore": "latest"
+    "underscore": "latest",
+    "fontawesome": "latest"
   }
 }
