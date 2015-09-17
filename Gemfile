@@ -21,6 +21,7 @@ gem 'twitter-bootstrap-rails'
 gem 'bower-rails'
 gem 'devise'
 gem 'rolify'
+gem 'cancancan'
 
 # code quality/metric tools
 gem 'rubocop'
