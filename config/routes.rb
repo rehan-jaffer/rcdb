@@ -10,9 +10,10 @@ Rails.application.routes.draw do
   resources :static
 
   namespace :admin do
+    resources :alerts
     resources :benzodiazepines
     resources :cannabinoids
-    resource :dashboard
+    resources :dashboard
   end
 
 end
