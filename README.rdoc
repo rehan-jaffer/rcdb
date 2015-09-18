@@ -1,5 +1,14 @@
 == Chemical Observer Project
 
-## Notes
+== Notes
 
-This is still a very rough/messy project and needs refactoring and proper tests, my current focus on getting a prototype up and working as fast as possible. The heroku link can be found at http://chemicalobserver.com/
+This is still a very rough/messy project and needs refactoring and proper tests, my current focus on getting a prototype up and working as fast as possible. The heroku link can be found at http://chemicalobserver.com
+
+== Features requiring implementation before prototype launch
+
+* Integration of predictive analysis data with the web-based system
+* Registration system for different levels/classes of user
+
+== Areas that need improvement
+
+* Clean up drug->substance inheritance system
