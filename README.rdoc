@@ -42,7 +42,6 @@ sandi_meter gem:
 * Implement paper relevance up/down-voting
 * Create temporary logo
 * Add placeholder content
-* Import some sample data into heroku system
 * Retool paper scraper into a rake task
 * Style papers tooltip to be wider (how to do this in a responsive fashion?)
 
