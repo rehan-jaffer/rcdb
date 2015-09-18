@@ -34,3 +34,13 @@ This is still a very rough/messy project and needs refactoring and proper tests,
 * Create temporary logo
 * Add placeholder content
 * Import some sample data into heroku system
+* Retool paper scraper into a rake task
+* Style papers tooltip to be wider (how to do this in a responsive fashion?)
+
+== Data sources for integrated analytics
+
+=== Pubmed API
+Allows the aggregation of papers on a given substance by its chemical name. This data is displayed on the drug's page, with the ability to up/down vote papers for relevance (clinicians only).
+
+==== Proposed system:
+Vote -> Redis for tracking duplicate votes and temporary storage (ttl should be ~24 hours) -> every 12 hours votes are aggregated via a rake task through cron, and the paper "relevance" scores are updated.
