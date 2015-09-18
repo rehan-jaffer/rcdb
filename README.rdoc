@@ -21,6 +21,15 @@ This is still a very rough/messy project and needs refactoring and proper tests,
 * Integration of predictive analysis data with the web-based system
 * Registration system for different levels/classes of user
 
+== Key Metrics for Code Quality
+
+sandi_meter gem:
+  1. Classes are under 100 lines.
+  2. Methods are under 5 lines.
+  3. Method calls accepted are less than 4 parameters.
+  4. Controllers have one instance variable per action.
+
+
 == Areas that need improvement
 
 * Clean up drug->substance inheritance system
