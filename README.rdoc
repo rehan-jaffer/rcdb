@@ -24,3 +24,10 @@ This is still a very rough/messy project and needs refactoring and proper tests,
 == Areas that need improvement
 
 * Clean up drug->substance inheritance system
+
+== TODO list
+
+* Add registration/sign-in links
+* Add dashboards for various user types
+* Integrate content editing system with queueing
+* Implement paper relevance up/down-voting
