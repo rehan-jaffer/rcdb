@@ -1,5 +1,7 @@
 class Drug < ActiveRecord::Base
+
   actable
+  resourcify
   has_many :resources
   has_many :papers
   has_many :reports
