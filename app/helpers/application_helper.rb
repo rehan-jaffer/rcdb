@@ -12,4 +12,18 @@ module ApplicationHelper
     end
   end
 
+  def display_alert(alert)
+
+    alert_class = case alert.severity
+      when 10
+        "alert-danger"
+      when 5
+        "alert-warning"
+    end
+
+    content_tag(:div, 
+      content_tag(:strong, alert.title) +
+      content_tag(:p, alert.body), :class => "alert #{alert_class}")
+  end
+
 end
