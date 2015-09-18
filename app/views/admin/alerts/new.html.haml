@@ -1,0 +1,7 @@
+%h1 New Alert
+= simple_form_for([:admin, @alert]) do |f|
+  = f.input :title
+  = f.input :severity
+  = f.input :priority
+  = f.input :body
+  = f.submit
