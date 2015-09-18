@@ -1,5 +1,17 @@
 == Chemical Observer Project
 
+=== Purpose
+
+To provide a collaborative platform for users to be able to compile available data on Research Chemicals/Legal Highs, along with predictive analysis of trends in usage, giving clinicians early warnings of current trends in the use of such drugs, and the most up to date information. Also to provide consumers of these substances with as much harm reduction information as possible.
+
+=== Design
+
+I propose several classes of user:
+* Consumers - users of the substance in question, who will be encouraged to submit information, harm/addiction potential, and "consumer reports" on substances.
+* Clinicians - licensed medical professionals, who will require manual verification in order to gain this status
+* Moderators - people who will review submitted data for grammar/spelling and potentially harmful content before it is added to the information database
+* Scientists - group including chemists or pharmacologists who may be able to shed light on the structure-activity relationship, possible complications, and if possible are able to carry out random sampling of Research Chemicals from various vendors for quality/content checks.
+
 == Notes
 
 This is still a very rough/messy project and needs refactoring and proper tests, my current focus on getting a prototype up and working as fast as possible. The heroku link can be found at http://chemicalobserver.com
