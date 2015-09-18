@@ -1,28 +1,5 @@
-== README
+== Chemical Observer Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Notes
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+This is still a very rough/messy project and needs refactoring and proper tests, my current focus on getting a prototype up and working as fast as possible. The heroku link can be found at http://chemicalobserver.com/
