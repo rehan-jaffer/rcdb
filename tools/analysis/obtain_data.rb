@@ -1,6 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
-require 'rkelly'
+require 'json'
 
 term = ARGV[0]
 
@@ -8,15 +8,6 @@ html = Nokogiri::HTML(open("http://www.google.com/trends/fetchComponent?hl=en-US
 
 js = html.xpath("//script")[4].inner_html
 
-parser = RKelly::Parser.new
+json_data = js.split("chartData = ")[1].split("; var htmlChart")[0]
 
-ast = parser.parse(js)
-
-ast.each do |node|
-  if node.respond_to?(:name) && node.name == "chartData"
-    node.to_a.each do |element|
-      puts element.value if element.respond_to?(:name) && element.name == "chartData"
-    end
-  end
-end
-
+puts JSON.parse(json_data)
