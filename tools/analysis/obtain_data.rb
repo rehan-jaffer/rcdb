@@ -1,6 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
-require 'json'
+require 'execjs'
 
 term = ARGV[0]
 
@@ -10,4 +10,14 @@ js = html.xpath("//script")[4].inner_html
 
 json_data = js.split("chartData = ")[1].split("; var htmlChart")[0]
 
-puts JSON.parse(json_data)
+data_set = ExecJS.eval(json_data)
+
+row_table = {}
+
+data_set["rows"].each do |entry|
+
+  row_table[entry[0]["v"].strftime("%Y-%m-%d")] = entry[3]
+
+end
+
+puts row_table
