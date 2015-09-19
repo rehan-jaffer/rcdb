@@ -4,6 +4,10 @@
 
 To provide a collaborative platform for users to be able to compile available data on Research Chemicals/Legal Highs, along with predictive analysis of trends in usage, giving clinicians early warnings of current trends in the use of such drugs, and the most up to date information. Also to provide consumers of these substances with as much harm reduction information as possible.
 
+=== Preface
+
+I'm playing fast and loose with this prototype, it's still highly experimental and the goal is to have a working version that I can demonstrate as fast as possible. As a result refactoring and testing has taken a backseat until the first prototype release. Don't judge me! I'm also using Heroku to avoid procrastinating by fiddling with the server stack excessively. Whatever will accelerate development.
+
 === Design
 
 I propose several classes of user:
