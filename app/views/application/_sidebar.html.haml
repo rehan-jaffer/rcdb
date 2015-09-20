@@ -20,15 +20,19 @@
     %li
       %a 
         %strong
+          Actions
+      %li
+        = link_to "Log In", new_user_session_path
+      %li
+        = link_to "Register", new_user_registration_path
+    %li
+      %a 
+        %strong
           Pages
     %li
       %a{:href => "/static/about"} About
     %li
-      %a{:href => "/static/volunteer"} Volunteer
-    %li
       %a{:href => "/static/contact"} Contact Us
     %li
       %a{:href => "/static/exit"} Looking for a way out?
-    %li
-      %a{:href => "/static/harm_reduction"} Harm Reduction Theory
 / /#sidebar-wrapper
