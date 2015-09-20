@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150917140142) do
+ActiveRecord::Schema.define(version: 20150919212214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,19 +45,23 @@ ActiveRecord::Schema.define(version: 20150917140142) do
 
   create_table "drugs", force: :cascade do |t|
     t.string   "primary_name"
-    t.string   "other_names",                  array: true
+    t.string   "other_names",                        array: true
     t.text     "description"
-    t.string   "trade_names",                  array: true
+    t.string   "trade_names",                        array: true
     t.integer  "onset"
     t.integer  "half_life"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.integer  "actable_id"
     t.string   "actable_type"
-    t.string   "articles",                     array: true
-    t.string   "fatalities",                   array: true
+    t.string   "articles",                           array: true
+    t.string   "fatalities",                         array: true
     t.string   "paper_feed"
     t.string   "report_feed_url"
+    t.integer  "google_trend_3_months"
+    t.integer  "google_trend_6_months"
+    t.integer  "google_trend_9_months"
+    t.date     "start_date"
   end
 
   create_table "edits", force: :cascade do |t|
