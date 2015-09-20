@@ -40,7 +40,6 @@ sandi_meter gem:
 
 == TODO list
 
-* Add registration/sign-in links
 * Add dashboards for various user types
 * Integrate content editing system with queueing
 * Implement paper relevance up/down-voting
@@ -48,6 +47,7 @@ sandi_meter gem:
 * Add placeholder content
 * Retool paper scraper into a rake task
 * Style papers tooltip to be wider (how to do this in a responsive fashion?)
+* Add algorithms for creating moving averages for 3 months, 6 months and 9 months, along with start date
 
 == Data sources for integrated analytics
 
