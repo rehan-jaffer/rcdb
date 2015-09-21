@@ -1,6 +1,6 @@
 %li.paper-link
   = link_to paper.title, paper.link, :data => {:toggle => "popover", :content => paper.abstract, :trigger => "hover", :html => true, :placement => "top"}
-  %a{data: {:paper_id => paper.id}}
+  %a{data: {:paper_id => paper.id}, id: "paper-#{paper.id}", class: "paper-link"}
     %i.fa.fa-arrow-circle-down.down-vote-paper
-  %a{data: {:paper_id => paper.id}}
+  %a{data: {:paper_id => paper.id}, id: "paper-#{paper.id}", class: "paper-link"}
     %i.fa.fa-arrow-circle-up.up-vote-paper
