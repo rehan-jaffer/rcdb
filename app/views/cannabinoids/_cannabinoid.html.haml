@@ -1,1 +1,7 @@
-%li.drug_row= link_to cannabinoid.primary_name, cannabinoid_path(cannabinoid)
+.row.drug-row
+  .col-md-3
+    = link_to cannabinoid.primary_name, cannabinoid_path(cannabinoid)
+  .col-md-4
+    = display_other_names(cannabinoid.other_names)
+  .col-md-3
+    = display_trade_names(cannabinoid.trade_names)
