@@ -1,4 +1,4 @@
-class Admin::BenzodiazepinesController < ApplicationController
+class Admin::BenzodiazepinesController < Admin::AdminController
 
   def new
     @benzo = Benzodiazepine.new

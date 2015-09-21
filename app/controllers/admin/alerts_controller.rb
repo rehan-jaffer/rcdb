@@ -1,4 +1,4 @@
-class Admin::AlertsController < ApplicationController
+class Admin::AlertsController < Admin::AdminController
 
   def new
     @alert = Alert.new
