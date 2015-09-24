@@ -2,6 +2,7 @@ class Admin::BenzodiazepinesController < Admin::AdminController
 
   def new
     @benzo = Benzodiazepine.new
+    @receptor_list = Benzodiazepine.receptor_list
   end
 
   def create
