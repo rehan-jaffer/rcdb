@@ -21,10 +21,14 @@
       %a 
         %strong
           Actions
-      %li
-        = link_to "Log In", new_user_session_path
-      %li
-        = link_to "Register", new_user_registration_path
+      - unless user_signed_in?
+        %li
+          = link_to "Log In", new_user_session_path
+        %li
+          = link_to "Register", new_user_registration_path
+      - if user_signed_in? && current_user.has_role?(:admin)
+        %li
+          = link_to "Admin", admin_dashboard_index_path
     %li
       %a 
         %strong
