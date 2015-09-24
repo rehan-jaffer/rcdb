@@ -1,0 +1,13 @@
+= simple_form_for([:admin, @cannabinoid]) do |f|
+  = f.input :primary_name
+  = f.input :other_names
+  = f.input :trade_names
+  = f.input :description
+  = f.input :onset
+  .row
+    = affinity_inputs_helper(f, [:a1, :a2, :a3])
+  .row
+    = f.input :paper_feed
+  = f.input :report_feed_url
+  = f.input :full_name
+  = f.submit
