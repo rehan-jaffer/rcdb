@@ -7,10 +7,15 @@ class Admin::BenzodiazepinesController < Admin::AdminController
 
   def create
     @benzo = Benzodiazepine.new(benzo_attributes)
-    @benzo.save
+    if @benzo.save
+      redirect_to admin_benzodiazepines_index_path
+    else
+      render :new
+    end
   end
 
   def edit
+    @benzo = Benzodiazepine.find_by_id(benzo_attributes[:id])
   end
 
   def save

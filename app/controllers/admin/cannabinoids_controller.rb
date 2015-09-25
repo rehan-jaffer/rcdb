@@ -9,8 +9,14 @@ class Admin::CannabinoidsController < Admin::AdminController
   end
 
   def create
+
     @cannabinoid = Cannabinoid.new(cannabinoid_params)
-    @cannabinoid.save
+    if @cannabinoid.save
+      redirect_to admin_cannabinoids_index_path
+    else
+      render :new
+    end
+
   end
 
   def index

@@ -1,0 +1,2 @@
+class PsychedelicsController < ApplicationController
+end
