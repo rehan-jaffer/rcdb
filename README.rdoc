@@ -24,6 +24,11 @@ This is still a very rough/messy project and needs refactoring and proper tests,
 
 * Integration of predictive analysis data with the web-based system
 * Registration system for different levels/classes of user
+* Upwards trending substances list/RSS feed
+
+== Features for version 1.1
+
+* Voting up/down for paper relevance
 
 == Key Metrics for Code Quality
 
@@ -46,6 +51,7 @@ sandi_meter gem:
 * Create temporary logo
 * Add placeholder content
 * Style papers tooltip to be wider (how to do this in a responsive fashion?)
+* Alerts RSS feed
 
 
 == Data sources for integrated analytics
