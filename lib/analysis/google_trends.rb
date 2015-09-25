@@ -9,7 +9,7 @@ module GoogleTrends
     data_set = obtain_data(drug_name)
 
     non_empty = data_set["rows"].keep_if do |entry|
-      entry[3] > 0
+      entry[3].to_i > 0
     end
 
     return non_empty.first[0]["v"]
