@@ -7,6 +7,9 @@
   = display_trade_names(@cannabinoid.trade_names)
 %p= @cannabinoid.description
 
+%h4 Estimated First Appearance
+= @cannabinoid.start_date
+
 %h3 Receptor Affinity
 .row
   %table.table-bordered.col-lg-6
@@ -22,11 +25,7 @@
 
 = display_google_trends_graph(@cannabinoid.primary_name)
 
-%h3 Consumer Reports
-
-= render @cannabinoid.reports
-
-= link_to "Submit Report", "#", :class => "btn btn-primary"
+= render "reports", :reports => @cannabinoid.reports
 
 %h3 Papers
 .papers-container.col-md-8

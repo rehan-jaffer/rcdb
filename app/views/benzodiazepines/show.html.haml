@@ -6,6 +6,10 @@
   Trade names:
   = display_trade_names(@benzodiazepine.trade_names)
 %p= @benzodiazepine.description
+
+%h4 Estimated First Appearance
+= @benzodiazepine.start_date
+
 %h3 Diazepam Equivalence
 %p= "1mg = #{@benzodiazepine.valium_equiv}mg"
 
@@ -20,15 +24,11 @@
         %td.receptor-name.col-lg-3= bkey
         %td.receptor-value.col-lg-3= @benzodiazepine.affinity[bkey]
 
-%h3 Search trend data
+%h3 Demand trend graph
 
 = display_google_trends_graph(@benzodiazepine.primary_name)
 
-%h3 Consumer Reports
-
-= render @benzodiazepine.reports
-
-= link_to "Submit Report", "#", :class => "btn btn-primary"
+= render 'reports', :reports => @benzodiazepine.reports
 
 %h3 Papers
 .papers-container.md-8
