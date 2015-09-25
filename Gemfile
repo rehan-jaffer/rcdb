@@ -22,6 +22,7 @@ gem 'bower-rails'
 gem 'devise'
 gem 'rolify'
 gem 'cancancan'
+gem 'newrelic_rpm'
 
 # code quality/metric tools
 gem 'rubocop'
