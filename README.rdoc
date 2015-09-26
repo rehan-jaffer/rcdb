@@ -51,8 +51,6 @@ sandi_meter gem:
 * Create temporary logo
 * Add placeholder content
 * Style papers tooltip to be wider (how to do this in a responsive fashion?)
-* Alerts RSS feed
-
 
 == Data sources for integrated analytics
 
@@ -60,4 +58,10 @@ sandi_meter gem:
 Allows the aggregation of papers on a given substance by its chemical name. This data is displayed on the drug's page, with the ability to up/down vote papers for relevance (clinicians only).
 
 ==== Proposed system:
-Vote -> Redis for tracking duplicate votes and temporary storage (ttl should be ~24 hours) -> every 12 hours votes are aggregated via a rake task through cron, and the paper "relevance" scores are updated.
+* Vote -> Redis for tracking duplicate votes and temporary storage (ttl should be ~24 hours) -> every 12 hours votes are aggregated via a rake task through cron, and the paper "relevance" scores are updated.
+
+=== Google Trends
+
+==== Proposed system:
+* Infer first occurance date by using the trends data on the first time that this was searched for (already in place)
+* Extract information on recent consumption trends (last 3 months) compared to the last 6 months to determine degree of "upward trending"
