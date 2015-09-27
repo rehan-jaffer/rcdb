@@ -1,0 +1,7 @@
+.row.drug-row
+  .col-md-3
+    = link_to drug.primary_name, drug_path(drug.primary_name)
+  .col-md-4
+    = display_other_names(drug.other_names)
+  .col-md-3
+    = display_trade_names(drug.trade_names)
