@@ -26,4 +26,8 @@ module ApplicationHelper
       content_tag(:p, alert.body), :class => "alert #{alert_class}")
   end
 
+  def display_bar(degree)
+    render :partial => 'display_bar', degree => (degree.to_i * 10)
+  end
+
 end
