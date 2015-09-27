@@ -5,7 +5,9 @@ class StimulantsController < ApplicationController
   end
 
   def show
-   @stimulant = Stimulant.find_by_primary_name(stimulant_params[:primary_name])
+   # UNSAFE
+   @drug = Stimulant.where(primary_name: params[:id]).first
+   render 'application/drug'
   end
 
   def stimulant_params
