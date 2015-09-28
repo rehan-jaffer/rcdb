@@ -85,7 +85,7 @@ production:
   <<: *default
   database: rcdb_production
   username: rcdb_production
-  password: <% = ENV['DATABASE_PASSWORD'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
 
 cucumber:
   <<: *test
