@@ -22,7 +22,7 @@ default: &default
   pool: 5
   hostname: localhost
   username: rcdb
-  password: rcdb913jack
+  password: <%= ENV['DATABASE_PASSWORD'] %>
 
 development:
   <<: *default
@@ -84,8 +84,8 @@ test: &test
 production:
   <<: *default
   database: rcdb_production
-  username: rcdb
-  password: <%= ENV['RCDB_DATABASE_PASSWORD'] %>
+  username: rcdb_production
+  password: <% = ENV['DATABASE_PASSWORD'] %>
 
 cucumber:
   <<: *test
