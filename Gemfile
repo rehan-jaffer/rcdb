@@ -23,6 +23,7 @@ gem 'devise'
 gem 'rolify'
 gem 'cancancan'
 gem 'newrelic_rpm'
+gem 'therubyracer'
 
 # code quality/metric tools
 gem 'rubocop'
@@ -32,6 +33,7 @@ gem 'bullet'
 gem 'brakeman'
 gem 'deadweight'
 gem 'sandi_meter'
+gem 'capistrano'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
