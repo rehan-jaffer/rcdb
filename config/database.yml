@@ -85,6 +85,7 @@ production:
   <<: *default
   database: rcdb_production
   username: rcdb_production
+  hostname: localhost
   password: <%= ENV['DATABASE_PASSWORD'] %>
 
 cucumber:
