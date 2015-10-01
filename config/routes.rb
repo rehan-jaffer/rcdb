@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :cannabinoids
   resources :stimulants
   resources :psychedelics
+  resources :reports
   resources :home, :only => [:index]
   resources :drugs
   root to: "home#index"
