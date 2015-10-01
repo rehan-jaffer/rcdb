@@ -6,6 +6,7 @@ class BenzodiazepinesController < ApplicationController
 
   def show
     @benzodiazepine = Benzodiazepine.where(:primary_name => params[:id]).last
+    @report = Report.new
   end
 
 end
