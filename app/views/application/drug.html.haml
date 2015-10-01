@@ -9,13 +9,14 @@
     = display_trade_names(@drug.trade_names)
 %p= @drug.description
 
+.row
 - unless @drug.start_date.nil?
   %h4 Estimated First Appearance
   = @drug.start_date
 
-- unless @drug.affinity.nil?
-  %h3 Receptor Affinity
-  .row
+.row
+  - unless @drug.affinity.nil?
+    %h3 Receptor Affinity
     %table.table-bordered.col-lg-6
       %tr
         %td Receptor Subtype
