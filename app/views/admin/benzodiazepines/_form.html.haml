@@ -1,11 +1,21 @@
 = simple_form_for([:admin, @benzo]) do |f|
   %h2 New Benzodiazepine
-  = f.input :primary_name
-  = f.input :description
-  = f.input :half_life
-  = f.input :onset
-  = f.input :trade_names
-  %h3 Receptor Affinities
-  = affinity_inputs_helper(f, @receptor_list)
-  = f.input :valium_equiv
-  = f.submit
+  .row
+    = f.input :primary_name
+  .row
+    = f.input :description
+  .row
+    = f.input :half_life
+  .row
+    = f.input :onset
+  .row
+    = f.input :trade_names
+  .row
+    = f.input :other_names
+  .row
+    %h3 Receptor Affinities
+    = affinity_inputs_helper(f, @receptor_list)
+  .row
+    = f.input :valium_equiv
+  .row
+    = f.submit
