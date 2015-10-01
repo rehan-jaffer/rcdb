@@ -1,18 +1,19 @@
-%h2= @drug.primary_name
-- unless @drug.other_names.nil?
-  %h4
-    Other names:
-    = display_other_names(@drug.other_names)
-- unless @drug.trade_names.nil?
-  %h4
-    Trade names:
-    = display_trade_names(@drug.trade_names)
-%p= @drug.description
+.row
+  %h2= @drug.primary_name
+  - unless @drug.other_names.nil?
+    %h4
+      Other names:
+      = display_other_names(@drug.other_names)
+  - unless @drug.trade_names.nil?
+    %h4
+      Trade names:
+      = display_trade_names(@drug.trade_names)
+  %p= @drug.description
 
 .row
 - unless @drug.start_date.nil?
   %h4 Estimated First Appearance
-  = @drug.start_date
+  = @drug.inception_date
 
 .row
   - unless @drug.affinity.nil?
@@ -34,11 +35,11 @@
 
 - if @drug.respond_to?(:valium_equiv)
   %h3 Diazepam Equivalence
-  %p= "1mg = #{@benzodiazepine.valium_equiv}mg"
+  %p= "1mg = #{@drug.valium_equiv}mg"
 
 %h4 Demand trend graph
 = display_google_trends_graph(@drug.primary_name)
-= render 'reports', :reports => @drug.reports
+= render 'reports', :reports => @drug.reports, :drug_id => @drug.drug.id
 
 %h3 Papers
 .papers-container.md-8
