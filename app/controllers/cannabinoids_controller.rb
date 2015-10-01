@@ -6,6 +6,7 @@ class CannabinoidsController < ApplicationController
 
   def show
     @drug = Cannabinoid.where(:primary_name => params[:id]).first
+    @title = "Cannabinoids / #{@drug.primary_name}"
     @report = Report.new
     render 'application/drug'
   end
