@@ -56,6 +56,11 @@ sandi_meter gem:
 * Create temporary logo
 * Add placeholder content
 * Style papers tooltip to be wider (how to do this in a responsive fashion?)
+* Enable submission of consumer reports
+* Add flags to consumer reports
+* Add user classes to registration/sign-up page
+* Add back-end system that requires activation for clinician verification for usage in the system
+* Add custom 404 and 500 pages
 
 == Data sources for integrated analytics
 
