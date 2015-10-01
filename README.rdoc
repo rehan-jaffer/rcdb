@@ -70,3 +70,16 @@ Allows the aggregation of papers on a given substance by its chemical name. This
 ==== Proposed system:
 * Infer first occurance date by using the trends data on the first time that this was searched for (already in place)
 * Extract information on recent consumption trends (last 3 months) compared to the last 6 months to determine degree of "upward trending"
+
+=== Reddit
+
+==== Proposed system:
+* This still remains under investigation, but reddit remains a source of interesting anecdotal information on particular substances
+
+== Analytics Tools
+
+=== Alchemy API
+API Key obtained via http://www.alchemyapi.com/
+
+==== Proposed System
+* None as yet, still toying with the API
