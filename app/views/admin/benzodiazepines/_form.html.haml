@@ -7,11 +7,11 @@
   .row
     = f.input :half_life
   .row
-    = f.input :onset
+    = onset_inputs_helper(f)
   .row
-    = f.input :trade_names
+    = f.input :trade_names, input_html: {:value => ['test', 'test2']}
   .row
-    = f.input :other_names
+    = f.input :other_names, input_html: {:value => ['test', 'test2']}
   .row
     %h3 Receptor Affinities
     = affinity_inputs_helper(f, @receptor_list)

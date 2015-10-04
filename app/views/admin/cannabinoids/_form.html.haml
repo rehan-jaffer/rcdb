@@ -3,7 +3,8 @@
   = f.input :other_names
   = f.input :trade_names
   = f.input :description
-  = f.input :onset
+  .row
+    = onset_inputs_helper(f)
   .row
     = affinity_inputs_helper(f, [:a1, :a2, :a3])
   .row
