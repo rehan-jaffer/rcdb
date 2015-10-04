@@ -19,6 +19,7 @@ class Benzodiazepine < ActiveRecord::Base
 
   self.class_eval do
     affinity_accessors(receptor_list)
+    onset_accessors
   end
 
 end

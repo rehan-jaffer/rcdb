@@ -6,4 +6,10 @@ module Drug::DrugProperties
       end
     end  
 
+   def onset_accessors
+     [:onset_oral, :onset_iv, :onset_insufflation, :onset_rectal, :onset_sublingual, :onset_inhaled].each do |onset_type|
+      store_accessor :onset, onset_type
+     end
+   end
+
 end
