@@ -1,0 +1,7 @@
+.row.report-box
+  .col-md-8.report-header
+    %strong.report-title
+      = link_to report.title, "javascript:void();", class: "report-link"
+  .col-md-8.report-body
+    %em= report.created_at
+    %blockquote= report.report
