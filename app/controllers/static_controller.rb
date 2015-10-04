@@ -3,7 +3,7 @@ class StaticController < ApplicationController
   def show
 
     if page_exists?(params[:id])
-      render params[:id].to_sym
+      render params[:id].downcase.to_sym
     else
       render nil, :status => 404
     end

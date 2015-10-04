@@ -1,4 +1,4 @@
-class BenzodiazepinesController < ApplicationController
+class BenzodiazepinesController < DrugsController
 
   def index
     @benzodiazepines = Benzodiazepine.all.to_a

@@ -5,7 +5,7 @@ class Admin::CannabinoidsController < Admin::AdminController
   end
 
   def edit
-
+    @cannabinoid = Cannabinoid.find(params[:id].to_i)
   end
 
   def create
