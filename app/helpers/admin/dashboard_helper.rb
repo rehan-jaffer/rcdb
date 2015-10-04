@@ -1,5 +1,7 @@
 module Admin::DashboardHelper
 
+  # this can be refactored into a single function for both
+
   def affinity_inputs_helper(form_object, receptor_list)
    form = ''
    form_object.simple_fields_for :affinity do |receptor_inputs|
@@ -11,4 +13,18 @@ module Admin::DashboardHelper
    end
    form.html_safe
   end
+
+  def onset_inputs_helper(form_object)
+  form = ''
+  onset_array = [:onset_oral, :onset_iv, :onset_insufflation, :onset_rectal, :onset_sublingual, :onset_inhaled]
+    form_object.simple_fields_for :onset do |onset_input|
+       onset_array.each do |onset_type|
+         form << content_tag(:div,
+           onset_input.input(onset_type, size: 4),
+         class: "col-lg-8 col-md-8")
+       end
+    end
+    form.html_safe
+  end
+
 end
