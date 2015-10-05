@@ -6,8 +6,8 @@ module DrugsHelper
 
   def select_drug_path(drug)
   
-    drug_type = drug.class
-    return send("#{drug_type.to_s.downcase}_path", drug.primary_name)
+    drug_type = drug.class_type
+    return send("#{drug_type}_path", drug.primary_name)
 
   end
 

@@ -27,7 +27,19 @@ module ApplicationHelper
   end
 
   def display_bar(degree)
-    render :partial => 'display_bar', locals: {degree: (degree.to_i * 10)}
+
+    degree_whole = degree.to_i * 10
+
+    bar_class = case degree_whole
+      when 10
+        "danger"
+      when 5
+        "warning"
+      when 1
+        "success"
+    end
+
+    render :partial => 'display_bar', locals: {degree: (degree.to_i * 10), bar_class: bar_class}
   end
 
 end
