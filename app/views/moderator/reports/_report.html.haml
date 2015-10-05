@@ -1,0 +1,5 @@
+.row
+  %h3= report.title
+  %em= report.created_at
+  %blockquote= report.report
+  = report_options_helper(report.id)
