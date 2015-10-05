@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150919212214) do
+ActiveRecord::Schema.define(version: 20151005095826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,24 +45,33 @@ ActiveRecord::Schema.define(version: 20150919212214) do
 
   create_table "drugs", force: :cascade do |t|
     t.string   "primary_name"
-    t.string   "other_names",                        array: true
+    t.string   "other_names",                                         array: true
     t.text     "description"
-    t.string   "trade_names",                        array: true
-    t.integer  "onset"
-    t.integer  "half_life"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.string   "trade_names",                                         array: true
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.integer  "actable_id"
     t.string   "actable_type"
-    t.string   "articles",                           array: true
-    t.string   "fatalities",                         array: true
+    t.string   "articles",                                            array: true
+    t.string   "fatalities",                                          array: true
     t.string   "paper_feed"
     t.string   "report_feed_url"
     t.integer  "google_trend_3_months"
     t.integer  "google_trend_6_months"
     t.integer  "google_trend_9_months"
     t.date     "start_date"
+    t.decimal  "harm_rating",           default: 5.0
+    t.integer  "harm_votes",            default: 0
+    t.decimal  "addiction_rating",      default: 5.0
+    t.integer  "addiction_votes",       default: 0
+    t.hstore   "affinity"
+    t.string   "full_name"
+    t.hstore   "onset",                 default: {}
+    t.hstore   "half_life",             default: {}
+    t.string   "class_type",            default: "drug"
   end
+
+  add_index "drugs", ["primary_name"], name: "index_drugs_on_primary_name", using: :btree
 
   create_table "edits", force: :cascade do |t|
     t.integer  "drug_id"
@@ -73,6 +82,14 @@ ActiveRecord::Schema.define(version: 20150919212214) do
     t.string   "property"
   end
 
+  create_table "metabolites", force: :cascade do |t|
+    t.integer  "drug_id",                   null: false
+    t.string   "name",                      null: false
+    t.boolean  "active",     default: true, null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
   create_table "papers", force: :cascade do |t|
     t.string  "title",            null: false
     t.integer "drug_id",          null: false
@@ -81,13 +98,22 @@ ActiveRecord::Schema.define(version: 20150919212214) do
     t.integer "publication_date"
   end
 
-  create_table "reports", force: :cascade do |t|
-    t.string   "title",      null: false
-    t.text     "report",     null: false
-    t.string   "user_id",    null: false
+  create_table "psychedelics", force: :cascade do |t|
+    t.string   "classes",                 array: true
+    t.string   "subtype"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.string   "title",                      null: false
+    t.text     "report",                     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "drug_id"
+    t.boolean  "moderated",  default: false, null: false
+    t.boolean  "approved",   default: false, null: false
+    t.integer  "user_id"
   end
 
   create_table "resources", force: :cascade do |t|
@@ -108,6 +134,13 @@ ActiveRecord::Schema.define(version: 20150919212214) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+
+  create_table "stimulants", force: :cascade do |t|
+    t.string   "classes",                 array: true
+    t.string   "subtype"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
