@@ -8,44 +8,53 @@
     %h4
       Trade names:
       = display_trade_names(@drug.trade_names)
-  %p= @drug.description
+  %blockquote= @drug.description
 
 .row
 - unless @drug.start_date.nil?
-  %h4 Estimated First Appearance
+  %h3 Estimated First Appearance
   = @drug.inception_date
 
 .row
   - unless @drug.affinity.nil?
     %h3 Receptor Affinity
-    %table.table-bordered.col-lg-6
-      %tr
-        %td Receptor Subtype
-        %td Binding Affinity
+    %table.table.table-bordered.table-striped.col-lg-6
+      %thead
+        %td 
+          %strong Receptor Subtype
+        %td 
+          %strong Binding Affinity
       - @drug.affinity.keys.each do |bkey|
         %tr.receptor-row
           %td.receptor-name.col-lg-3= bkey
           %td.receptor-value.col-lg-3= @drug.affinity[bkey]
 
-%h4 Ratings
-%h5= "Harm Rating (#{@drug.harm_votes} votes)"
-= display_bar(@drug.harm_rating)
-%h5= "Addiction Rating (#{@drug.addiction_votes} votes)"
-= display_bar(@drug.addiction_rating)
+.row
+  %h3 Ratings
+  %h4= "Harm Rating #{@drug.harm_rating} (#{@drug.harm_votes} votes)"
+  = display_bar(@drug.harm_rating)
+  %h4= "Addiction Rating #{@drug.addiction_rating} (#{@drug.addiction_votes} votes)"
+  = display_bar(@drug.addiction_rating)
 
-- if @drug.respond_to?(:valium_equiv)
-  %h3 Diazepam Equivalence
-  %p= "1mg = #{@drug.valium_equiv}mg"
+.row
+  - if @drug.respond_to?(:valium_equiv)
+    %h3 Diazepam Equivalence
+    %p= "1mg = #{@drug.valium_equiv}mg"
 
-%h4 Demand trend graph
-= display_google_trends_graph(@drug.primary_name)
-= render 'reports', :reports => @drug.reports, :drug_id => @drug.drug.id
+.row
+  %h4 Demand trend graph
+  = display_google_trends_graph(@drug.primary_name)
+.row
+  = render 'reports', :reports => @drug.reports, :drug_id => @drug.drug.id
 
-%h3 Papers
-.papers-container.md-8
-  = render @drug.papers
+.row
+  %h3 Papers
+  .papers-container.md-8
+    = render @drug.papers
 
-%h3 Articles
+.row
+  %h3 Articles
 
-%h3 Fatalities
+.row
+  %h3 Fatalities
 
