@@ -29,6 +29,9 @@
       - if user_signed_in? && current_user.has_role?(:admin)
         %li
           = link_to "Admin", admin_dashboard_index_path
+      - if user_signed_in? && (current_user.has_role?(:moderator) || current_user.has_role?(:admin))
+        %li
+          = link_to "Moderate", moderator_reports_path
     %li
       %a 
         %strong
