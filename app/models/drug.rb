@@ -5,6 +5,7 @@ class Drug < ActiveRecord::Base
   has_many :resources
   has_many :papers
   has_many :reports
+  has_many :metabolites
 
   validates_presence_of :primary_name
   validates_uniqueness_of :primary_name
