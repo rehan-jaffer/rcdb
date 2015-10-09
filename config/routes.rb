@@ -19,6 +19,10 @@ Rails.application.routes.draw do
     resources :dashboard
   end
 
+  namespace :moderator do
+    resources :reports
+  end
+
   resources :alerts
 
 end
