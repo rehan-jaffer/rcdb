@@ -25,11 +25,8 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   %body
-    #wrapper
-      / Sidebar
+    %main#wrapper
       = render 'sidebar'
-      / /#sidebar-wrapper
-      / Page Content
       #page-content-wrapper
         .container-fluid
           .row
@@ -38,11 +35,11 @@
           .row
             .col-lg-12
               = yield
-      / /#page-content-wrapper
-    / /#wrapper
+  %footer
     / Menu Toggle Script
-    :javascript
-      $("#menu-toggle").click(function(e) {
-          e.preventDefault();
-          $("#wrapper").toggleClass("toggled");
-      });
+  :javascript
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    
