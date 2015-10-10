@@ -11,24 +11,28 @@ class Admin::BenzodiazepinesController < Admin::AdminController
       redirect_to admin_benzodiazepines_index_path
     else
       render :new
+      return
     end
   end
 
   def edit
-    @benzo = Benzodiazepine.find_by_id(benzo_attributes[:id])
+    @benzo = Benzodiazepine.where(:primary_name => params[:id]).first
+    @receptor_list = Benzodiazepine.receptor_list
   end
 
   def save
-    @benzo = Benzodiazepine.new(benzo_attributes)
-    if @benzo.save
-      redirect_to admin_benzodiazepines_index_path
-    else
-      flash[:error] = @benzo.errors
-      render :edit
-    end
   end
 
   def update
+    @benzo = Benzodiazepine.update(benzo_attributes[:id], benzo_attributes)
+    @receptor_list = Benzodiazepine.receptor_list
+    if @benzo
+      redirect_to admin_benzodiazepines_path
+    else
+      flash[:error] = @benzo.errors
+      render :edit
+      return
+    end
   end
 
   def index
@@ -36,7 +40,7 @@ class Admin::BenzodiazepinesController < Admin::AdminController
   end
 
   def benzo_attributes
-    params.require(:benzodiazepine).permit(:primary_name, :valium_equiv, :description, :half_life, :onset, affinity: Benzodiazepine.stored_attributes[:affinity])
+    params.require(:benzodiazepine).permit(:id, :primary_name, :valium_equiv, :description, :half_life, :full_name, :paper_feed, :onset, :other_names, affinity: Benzodiazepine.stored_attributes[:affinity], trade_names: [])
   end
 
 end
