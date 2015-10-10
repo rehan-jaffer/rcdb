@@ -24,6 +24,7 @@ gem 'rolify'
 gem 'cancancan'
 gem 'newrelic_rpm'
 gem 'therubyracer'
+gem 'microdata'
 
 # code quality/metric tools
 gem 'rubocop'
