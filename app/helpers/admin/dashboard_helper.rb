@@ -26,7 +26,7 @@ module Admin::DashboardHelper
    form.html_safe
   end
 
-  def onset_inputs_helper(form_object, onset_list)
+  def onset_inputs_helper(form_object)
   form = ''
   onset_array = [:onset_oral, :onset_iv, :onset_insufflation, :onset_rectal, :onset_sublingual, :onset_inhaled]
     form_object.simple_fields_for :onset do |onset_input|
