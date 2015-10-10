@@ -40,7 +40,7 @@ class Admin::BenzodiazepinesController < Admin::AdminController
   end
 
   def benzo_attributes
-    params.require(:benzodiazepine).permit(:id, :primary_name, :valium_equiv, :description, :half_life, :full_name, :paper_feed, :onset, :other_names, affinity: Benzodiazepine.stored_attributes[:affinity], trade_names: [])
+    params.require(:benzodiazepine).permit(:id, :primary_name, :valium_equiv, :description, :half_life, :full_name, :paper_feed, :onset, affinity: Benzodiazepine.stored_attributes[:affinity], trade_names: [], other_names: [], classes: [])
   end
 
 end
