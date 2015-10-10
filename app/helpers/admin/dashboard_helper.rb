@@ -2,6 +2,15 @@ module Admin::DashboardHelper
 
   # these can be refactored into a single function for both
 
+  def array_input_helper(drug_object, field)
+    fields = []
+    fields << content_tag(:div, label_tag("#{field}", field.capitalize))
+    10.times do |n|
+      fields << text_field_tag("#{drug_object.class.to_s.downcase}[#{field}][]", drug_object.send(field.to_sym)[n])
+    end
+    fields.join("\r\n").html_safe
+  end
+
   def affinity_inputs_helper(form_object, receptor_list)
    form = ''
    form_object.simple_fields_for :affinity do |receptor_inputs|
