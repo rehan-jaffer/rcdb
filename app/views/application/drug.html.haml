@@ -1,7 +1,7 @@
 %article{:itemscope=>"", :itemtype=>"http://schema.org/Drug"}
   .row
     %h2{:itemprop=>"name"}= @drug.primary_name
-    %h2{:itemprop=>"alternateName"}= @drug.full_name
+    %h4{:itemprop=>"alternateName"}= @drug.full_name
     %h5{:itemprop=>"drugClass"}= @drug.class_type.capitalize
     - unless @drug.other_names.nil?
       %h4
@@ -11,27 +11,20 @@
       %h4
         Trade names:
         = display_trade_names(@drug.trade_names)
+  .row
+    - unless @drug.start_date.nil?
+      %strong Estimated First Appearance
+      = @drug.inception_date
+
+  .row
+    - unless @drug.molecule_image.nil?
+      = image_tag(@drug.molecule_image(:original), itemprop: "image")
+      - if @drug.respond_to?(:molecule_image_source)
+        %em= @drug.molecule_image_source
+
+  .row
     %blockquote
       %section{:itemprop=>"description"}= @drug.description
-
-  .row
-  - unless @drug.start_date.nil?
-    %h3 Estimated First Appearance
-    = @drug.inception_date
-
-  .row
-    - unless @drug.affinity.nil?
-      %h3 Receptor Affinity
-      %table.table.table-bordered.table-striped.col-lg-6
-        %thead
-          %td 
-            %strong Receptor Subtype
-          %td 
-            %strong Binding Affinity
-        - @drug.affinity.keys.each do |bkey|
-          %tr.receptor-row
-            %td.receptor-name.col-lg-3= bkey
-            %td.receptor-value.col-lg-3= @drug.affinity[bkey]
 
   .row
     %h3 Ratings
@@ -50,6 +43,20 @@
     = display_google_trends_graph(@drug.primary_name)
   .row
     = render 'reports', :reports => @drug.reports, :drug_id => @drug.drug.id
+
+  .row
+    - unless @drug.affinity.nil?
+      %h3 Receptor Affinity
+      %table.table.table-bordered.table-striped.col-lg-6
+        %thead
+          %td 
+            %strong Receptor Subtype
+          %td 
+            %strong Binding Affinity
+        - @drug.affinity.keys.each do |bkey|
+          %tr.receptor-row
+            %td.receptor-name.col-lg-3= bkey
+            %td.receptor-value.col-lg-3= @drug.affinity[bkey]
 
   .row
     %h3 Papers
