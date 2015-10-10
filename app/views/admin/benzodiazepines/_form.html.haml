@@ -2,10 +2,11 @@
   %h2 New Benzodiazepine
   .row
     = f.input :primary_name
+    = f.input :id, as: :hidden
   .row
-    = f.input :trade_names, input_html: {:value => ['test', 'test2']}
+    = array_input_helper(@benzo, :trade_names)
   .row
-    = f.input :other_names, input_html: {:value => ['test', 'test2']}
+    = array_input_helper(@benzo, :other_names)
   .row
     = f.input :full_name
   .row
