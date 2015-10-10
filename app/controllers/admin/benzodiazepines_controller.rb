@@ -19,6 +19,13 @@ class Admin::BenzodiazepinesController < Admin::AdminController
   end
 
   def save
+    @benzo = Benzodiazepine.new(benzo_attributes)
+    if @benzo.save
+      redirect_to admin_benzodiazepines_index_path
+    else
+      flash[:error] = @benzo.errors
+      render :edit
+    end
   end
 
   def update
