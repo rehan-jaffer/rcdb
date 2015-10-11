@@ -16,8 +16,8 @@ module Admin::DashboardHelper
    form_object.simple_fields_for :affinity do |receptor_inputs|
      receptor_list.each do |receptor|
        form << content_tag(:div,
-         receptor_inputs.input(receptor, input_html: {:g1 => "g1"}, size: 4),
-       class: "col-lg-8 col-md-8")
+         receptor_inputs.input(receptor, size: 4),
+       class: "col-lg-2 col-md-2")
      end
    end
    form.html_safe
@@ -29,7 +29,7 @@ module Admin::DashboardHelper
      receptor_list.each do |receptor|
        form << content_tag(:div,
          receptor_inputs.input(receptor, input_html: {:g1 => "g1"}, size: 4),
-       class: "col-lg-8 col-md-8")
+       class: "col-lg-2 col-md-2")
      end
    end
    form.html_safe
@@ -42,7 +42,7 @@ module Admin::DashboardHelper
        onset_array.each do |onset_type|
          form << content_tag(:div,
            onset_input.input(onset_type, size: 4),
-         class: "col-lg-8 col-md-8")
+         class: "col-lg-2 col-md-2")
        end
     end
     form.html_safe
