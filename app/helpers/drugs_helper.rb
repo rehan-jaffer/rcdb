@@ -11,4 +11,8 @@ module DrugsHelper
 
   end
 
+  def drug_microdata(drug)
+    render :partial => 'drug_microdata', locals: {:drug => drug}
+  end
+
 end
