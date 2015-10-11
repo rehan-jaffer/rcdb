@@ -3,11 +3,23 @@
     %h2{:itemprop=>"name"}= @drug.primary_name
     %h4{:itemprop=>"alternateName"}= @drug.full_name
     %h5{:itemprop=>"drugClass"}= @drug.class_type.capitalize
-    - unless @drug.other_names.nil?
+    - unless @drug.other_names.empty?
       %h4
         Other names:
         = display_other_names(@drug.other_names)
-    - unless @drug.trade_names.nil?
+    - unless @drug.side_effects.empty?
+      %h4
+        Side Effects:
+        = display_other_names(@drug.side_effects)
+    - unless @drug.classes.empty?
+      %h4
+        Classes:
+        = display_other_names(@drug.classes)
+    - unless @drug.solubility.empty?
+      %h4
+        Solubility:
+        = display_other_names(@drug.solubility)
+    - unless @drug.trade_names.empty?
       %h4
         Trade names:
         = display_trade_names(@drug.trade_names)
