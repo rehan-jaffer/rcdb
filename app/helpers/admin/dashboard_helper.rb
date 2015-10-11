@@ -2,11 +2,11 @@ module Admin::DashboardHelper
 
   # these can be refactored into a single function for both
 
-  def array_input_helper(drug_object, field)
+  def array_input_helper(drug_object, field, columns=2, boxes=10)
     fields = []
     fields << content_tag(:div, label_tag("#{field}", field.capitalize))
-    10.times do |n|
-      fields << text_field_tag("#{drug_object.class.to_s.downcase}[#{field}][]", drug_object.send(field.to_sym)[n])
+    boxes.times do |n|
+      fields << text_field_tag("#{drug_object.class.to_s.downcase}[#{field}][]", drug_object.send(field.to_sym)[n], class: "col-lg-#{columns} col-md-#{columns}")
     end
     fields.join("\r\n").html_safe
   end
