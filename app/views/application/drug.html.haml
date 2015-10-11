@@ -7,11 +7,13 @@
       %h4
         Other names:
         = display_other_names(@drug.other_names)
+
     - unless @drug.side_effects.empty?
       %h4
         Side Effects:
-        = display_other_names(@drug.side_effects)
+        = display_side_effects(@drug.side_effects)
     - unless @drug.classes.empty?
+
       %h4
         Classes:
         = display_other_names(@drug.classes)
@@ -29,14 +31,13 @@
       = @drug.inception_date
 
   .row
-    - unless @drug.molecule_image.nil?
-      = image_tag(@drug.molecule_image(:original), itemprop: "image")
-      - if @drug.respond_to?(:molecule_image_source)
-        %em= @drug.molecule_image_source
-
-  .row
     %blockquote
       %section{:itemprop=>"description"}= @drug.description
+
+  .row
+    - if @drug.respond_to?(:valium_equiv)
+      %h3 Diazepam Equivalence
+      %p= "1mg = #{@drug.valium_equiv}mg"
 
   .row
     %h3 Ratings
@@ -46,15 +47,17 @@
     = display_bar(@drug.addiction_rating)
 
   .row
-    - if @drug.respond_to?(:valium_equiv)
-      %h3 Diazepam Equivalence
-      %p= "1mg = #{@drug.valium_equiv}mg"
-
-  .row
     %h4 Demand trend graph
     = display_google_trends_graph(@drug.primary_name)
   .row
     = render 'reports', :reports => @drug.reports, :drug_id => @drug.drug.id
+
+  .row
+    %h3 Molecule Image
+    - unless @drug.molecule_image.nil?
+      = image_tag(@drug.molecule_image(:original), itemprop: "image")
+      - if @drug.respond_to?(:molecule_image_source)
+        %em= @drug.molecule_image_source
 
   .row
     - unless @drug.affinity.nil?
