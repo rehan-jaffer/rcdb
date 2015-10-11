@@ -1,4 +1,4 @@
-class Admin::BenzodiazepinesController < Admin::AdminController
+class Admin::BenzodiazepinesController < Admin::DrugsController
 
   def new
     @benzo = Benzodiazepine.new
@@ -40,7 +40,7 @@ class Admin::BenzodiazepinesController < Admin::AdminController
   end
 
   def benzo_attributes
-    params.require(:benzodiazepine).permit(:id, :primary_name, :valium_equiv, :description, :half_life, :full_name, :paper_feed, :onset, affinity: Benzodiazepine.stored_attributes[:affinity], trade_names: [], other_names: [], classes: [])
+    params.require(:benzodiazepine).permit(drug_attributes | [:valium_equiv, affinity: Benzodiazepine.stored_attributes[:affinity]])
   end
 
 end

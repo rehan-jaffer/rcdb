@@ -1,4 +1,4 @@
-class Admin::CannabinoidsController < Admin::AdminController
+class Admin::CannabinoidsController < Admin::DrugsController
 
   def new
     @cannabinoid = Cannabinoid.new
