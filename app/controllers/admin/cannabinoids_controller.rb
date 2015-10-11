@@ -2,15 +2,12 @@ class Admin::CannabinoidsController < Admin::AdminController
 
   def new
     @cannabinoid = Cannabinoid.new
-  end
-
-  def edit
-    @cannabinoid = Cannabinoid.find(params[:id].to_i)
+    @receptor_list = Cannabinoid.receptor_list
   end
 
   def create
-
     @cannabinoid = Cannabinoid.new(cannabinoid_params)
+    @receptor_list = Cannabinoid.receptor_list
     if @cannabinoid.save
       redirect_to admin_cannabinoids_index_path
     else
@@ -19,12 +16,29 @@ class Admin::CannabinoidsController < Admin::AdminController
 
   end
 
-  def index
-
+  def edit
+    @cannabinoid = Cannabinoid.where(:primary_name => params[:id]).first
+    @receptor_list = Cannabinoid.receptor_list
   end
 
-  def cannabinoid_params
-    params.require(:cannabinoid).permit([:primary_name])
+  def update
+    @cannabinoid = Cannabinoid.update(cannabinoid_attributes[:id], cannabinoid_attributes)
+    @receptor_list = Cannabinoid.receptor_list
+    if @cannabinoid
+      redirect_to admin_cannabinoids_path
+    else
+      flash[:error] = @cannabinoid.errors
+      render :edit
+      return
+    end
+  end
+
+  def index
+    @cannabinoids = Cannabinoid.all
+  end
+
+  def cannabinoid_attributes
+    params.require(:cannabinoid).permit(:id, :primary_name, :valium_equiv, :description, :half_life, :full_name, :paper_feed, :onset, affinity: Cannabinoid.stored_attributes[:affinity], trade_names: [], other_names: [], classes: [])
   end
 
 end
