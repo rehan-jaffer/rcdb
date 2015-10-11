@@ -1,14 +1,32 @@
 = simple_form_for([:admin, @cannabinoid]) do |f|
-  = f.input :primary_name
-  = f.input :other_names
-  = f.input :trade_names
-  = f.input :description
+  %h2 New Cannabinoid
+  .row
+    = f.input :primary_name
+    = f.input :id, as: :hidden
+  .row
+    = array_input_helper(@cannabinoid, :trade_names)
+  .row
+    = array_input_helper(@cannabinoid, :other_names)
+  .row
+    = array_input_helper(@cannabinoid, :classes)
+  .row
+    = array_input_helper(@cannabinoid, :side_effects)
+  .row
+    = array_input_helper(@cannabinoid, :solubility)
+  .row
+    = f.input :molecule_image
+  .row
+    = f.input :full_name
+  .row
+    = f.input :paper_feed
+  .row
+    = f.input :description
   .row
     = onset_inputs_helper(f)
   .row
-    = affinity_inputs_helper(f, [:a1, :a2, :a3])
+    %h3 Receptor Affinities
+    = affinity_inputs_helper(f, @receptor_list)
   .row
-    = f.input :paper_feed
-  = f.input :report_feed_url
-  = f.input :full_name
-  = f.submit
+    = array_input_helper(@cannabinoid, :references)
+  .row
+    = f.submit
