@@ -10,6 +10,12 @@
   .row
     = array_input_helper(@benzo, :classes)
   .row
+    = array_input_helper(@benzo, :side_effects)
+  .row
+    = array_input_helper(@benzo, :solubility)
+  .row
+    = f.input :molecule_image
+  .row
     = f.input :full_name
   .row
     = f.input :paper_feed
@@ -20,6 +26,8 @@
   .row
     %h3 Receptor Affinities
     = affinity_inputs_helper(f, @receptor_list)
+  .row
+    = array_input_helper(@benzo, :references)
   .row
     = f.input :valium_equiv
   .row
