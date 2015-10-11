@@ -6,10 +6,10 @@ class Admin::CannabinoidsController < Admin::AdminController
   end
 
   def create
-    @cannabinoid = Cannabinoid.new(cannabinoid_params)
+    @cannabinoid = Cannabinoid.new(cannabinoid_attributes)
     @receptor_list = Cannabinoid.receptor_list
     if @cannabinoid.save
-      redirect_to admin_cannabinoids_index_path
+      redirect_to admin_cannabinoids_path
     else
       render :new
     end
@@ -38,7 +38,7 @@ class Admin::CannabinoidsController < Admin::AdminController
   end
 
   def cannabinoid_attributes
-    params.require(:cannabinoid).permit(:id, :primary_name, :valium_equiv, :description, :half_life, :full_name, :paper_feed, :onset, affinity: Cannabinoid.stored_attributes[:affinity], trade_names: [], other_names: [], classes: [])
+    params.require(:cannabinoid).permit(:id, :primary_name, :valium_equiv, :description, :half_life, :full_name, :paper_feed, :onset, affinity: Cannabinoid.stored_attributes[:affinity], trade_names: [], other_names: [], classes: [], side_effects: [], solubility: [])
   end
 
 end
