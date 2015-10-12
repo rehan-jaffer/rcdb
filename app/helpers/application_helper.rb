@@ -12,6 +12,16 @@ module ApplicationHelper
     end
   end
 
+  def display_side_effects(effects)
+    content_tag(:ul,
+    effects.map { |effect|
+      content_tag(:li,
+        effect,
+      class: "drug-side-effect")
+    }.join("\r\n").html_safe,
+    class: "drug-side-effects").html_safe
+  end
+
   def display_alert(alert)
 
     alert_class = case alert.severity
