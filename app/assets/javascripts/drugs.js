@@ -10,4 +10,6 @@ $(function() {
   $('.report-link').on('click', function() {
     $(this).parents(".report-box").children(".report-body").show();
   });
+
+  $(".dial").knob();
 });
