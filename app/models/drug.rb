@@ -32,4 +32,12 @@ class Drug < ActiveRecord::Base
     self.start_date.strftime("%B %Y")
   end
 
+  def inception_year
+    self.start_date.strftime("%Y")
+  end
+
+  def inception_month
+    self.start_date.strftime("%B")
+  end
+
 end
