@@ -1,75 +1,66 @@
 %article{:itemscope=>"", :itemtype=>"http://schema.org/Drug", class: "drug-container #{@drug.class_type}-container"}
   .row
-    %h2.drug-primary-name{:itemprop=>"name"}= @drug.primary_name
-    %h5.drug-class-type{:itemprop=>"drugClass"}= @drug.class_type.capitalize
-    %h4.drug-full-name{:itemprop=>"alternateName"}= @drug.full_name
-    - unless @drug.other_names.empty?
-      %h4.drug-other-names
-        Other names:
-        = display_other_names(@drug.other_names)
-
-    - unless @drug.side_effects.empty?
-      %h4.side-effects-container
-        Side Effects:
-        = display_side_effects(@drug.side_effects)
-    - unless @drug.classes.empty?
-
-      %h4
-        Classes:
-        = display_other_names(@drug.classes)
-    - unless @drug.solubility.empty?
-      %h4
-        Solubility:
-        = display_other_names(@drug.solubility)
-    - unless @drug.trade_names.empty?
-      %h4
-        Trade names:
-        = display_trade_names(@drug.trade_names)
+    .col-lg-4.col-md-4
+      - unless @drug.molecule_image.nil?
+        = image_tag(@drug.molecule_image(:original), itemprop: "image", class: "col-lg-12 col-md-12")
+        - if @drug.respond_to?(:molecule_image_source)
+          %em= @drug.molecule_image_source
+    .col-lg-8.col-md-8
+      %h2.drug-primary-name{:itemprop=>"name"}= @drug.primary_name
+      %h5.drug-class-type{:itemprop=>"drugClass"}= @drug.class_type.capitalize
+      %h4.drug-full-name{:itemprop=>"alternateName"}= @drug.full_name
+    .row
+      .col-lg-6.col-md-6
+        - unless @drug.side_effects.empty?
+          %h4.side-effects-header Side Effects
+          = display_side_effects(@drug.side_effects)
+      .col-lg-6.col-md-6
+        %h4.data-header Extra Data
+      - unless @drug.other_names.empty?
+        %h4.drug-other-names
+          Other names:
+          = display_other_names(@drug.other_names)
+      - unless @drug.classes.empty?
+        %h4
+          Classes:
+          = display_other_names(@drug.classes)
+      - unless @drug.solubility.empty?
+        %h4
+          Solubility:
+          = display_other_names(@drug.solubility)
+      - unless @drug.trade_names.empty?
+        %h4
+          Trade names:
+          = display_trade_names(@drug.trade_names)
   .row
-    - unless @drug.start_date.nil?
-      %strong Estimated First Appearance
-      = @drug.inception_date
+    .col-md-4.col-lg-4.rating-box
+      %h3.rating-header Harm Rating
+      %input.dial{data: {min: "0", max: "10"}, type: "text", value: "#{@drug.harm_rating}"}
+    .col-md-4.col-lg-4.rating-box
+      %h3.rating-header Addiction Rating
+      %input.dial{data: {min: "0", max: "10"}, type: "text", value: "#{@drug.addiction_rating}"}
+    .col-md-4.col-lg-4.rating-box
+      %h3.rating-header Estimated First Appearance
+      = styled_panel_helper(@drug.inception_year, @drug.inception_month)
+  - if @drug.respond_to?(:valium_equiv)
+    .col-md-4.col-lg-4.rating-box
+      %h3.rating-header Diazepam Equivalence
+      = styled_panel_helper("1mg", "#{@drug.valium_equiv}mg diazepam")
 
   .row
-    .col-md-6.col-lg-6.rating-box
-      %h3.rating-header Harm
-      %input.dial{data: {min: "0", max: "10"}, type: "text", value: "5"}
-    .col-md-6.col-lg-6.rating-box
-      %h3.rating-header Addiction
-      %input.dial{data: {min: "0", max: "10"}, type: "text", value: "5"}
-
-  .row
-    %blockquote
+    %h4.description-header Description
+    %blockquote.drug-description
       %section{:itemprop=>"description"}= @drug.description
 
   .row
-    - if @drug.respond_to?(:valium_equiv)
-      %h3 Diazepam Equivalence
-      %p= "1mg = #{@drug.valium_equiv}mg"
-
-  .row
-    %h3 Ratings
-    %h4= "Harm Rating #{@drug.harm_rating} (#{@drug.harm_votes} votes)"
-    = display_bar(@drug.harm_rating)
-    %h4= "Addiction Rating #{@drug.addiction_rating} (#{@drug.addiction_votes} votes)"
-    = display_bar(@drug.addiction_rating)
-
-  .row
-    %h4 Demand trend graph
+    %h4.drug-trend-header Demand trend graph
     = display_google_trends_graph(@drug.primary_name)
   .row
     = render 'reports', :reports => @drug.reports, :drug_id => @drug.drug.id
 
   .row
-    %h3 Molecule Image
-    - unless @drug.molecule_image.nil?
-      = image_tag(@drug.molecule_image(:original), itemprop: "image")
-      - if @drug.respond_to?(:molecule_image_source)
-        %em= @drug.molecule_image_source
-
-  .row
     - unless @drug.affinity.nil?
-      %h3 Receptor Affinity
+      %h3.drug-receptor-header Receptor Affinity
       %table.table.table-bordered.table-striped.col-lg-6
         %thead
           %td 
@@ -82,12 +73,12 @@
             %td.receptor-value.col-lg-3= @drug.affinity[bkey]
 
   .row
-    %h3 Papers
+    %h3.drug-paper-header Papers
     .papers-container.md-8
       = render @drug.papers
 
   .row
-    %h3 Articles
+    %h3.drug-articles-header Articles
 
-  .row
+  .row.drug-fatalities-header
     %h3 Fatalities
