@@ -12,4 +12,8 @@ $(function() {
   });
 
   $(".dial").knob();
+
+  $(".drug-class-type").addClass("btn")
+  $(".drug-class-type").addClass("btn-default")
+
 });
