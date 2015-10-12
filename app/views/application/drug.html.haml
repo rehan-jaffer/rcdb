@@ -1,15 +1,15 @@
-%article{:itemscope=>"", :itemtype=>"http://schema.org/Drug"}
+%article{:itemscope=>"", :itemtype=>"http://schema.org/Drug", class: "drug-container #{@drug.class_type}-container"}
   .row
-    %h2{:itemprop=>"name"}= @drug.primary_name
-    %h4{:itemprop=>"alternateName"}= @drug.full_name
-    %h5{:itemprop=>"drugClass"}= @drug.class_type.capitalize
+    %h2.drug-primary-name{:itemprop=>"name"}= @drug.primary_name
+    %h5.drug-class-type{:itemprop=>"drugClass"}= @drug.class_type.capitalize
+    %h4.drug-full-name{:itemprop=>"alternateName"}= @drug.full_name
     - unless @drug.other_names.empty?
-      %h4
+      %h4.drug-other-names
         Other names:
         = display_other_names(@drug.other_names)
 
     - unless @drug.side_effects.empty?
-      %h4
+      %h4.side-effects-container
         Side Effects:
         = display_side_effects(@drug.side_effects)
     - unless @drug.classes.empty?
@@ -29,6 +29,14 @@
     - unless @drug.start_date.nil?
       %strong Estimated First Appearance
       = @drug.inception_date
+
+  .row
+    .col-md-6.col-lg-6.rating-box
+      %h3.rating-header Harm
+      %input.dial{data: {min: "0", max: "10"}, type: "text", value: "5"}
+    .col-md-6.col-lg-6.rating-box
+      %h3.rating-header Addiction
+      %input.dial{data: {min: "0", max: "10"}, type: "text", value: "5"}
 
   .row
     %blockquote
