@@ -7,7 +7,7 @@ class Drug < ActiveRecord::Base
   has_many :reports
   has_many :metabolites
 
-  has_attached_file :molecule_image, :styles => {:medium => "300x200#"}
+  has_attached_file :molecule_image, :styles => {:medium => "300x200>"}
 
   validates_attachment :molecule_image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
   validates_presence_of :primary_name
