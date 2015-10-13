@@ -146,3 +146,45 @@ body {
 .drug-image {
   text-align: center;
 }
+
+.alert-panel {
+  background-color: rgba(1, 1, 1, 0.5);
+  text-align: left;
+}
+
+.trans-panel {
+  background-color: rgba(1, 1, 1, 0.5);
+  text-align: left;
+}
+
+.btn-rounded-link {
+  background-color: none;
+  border-width: 2px;
+  border-radius: 5px;
+  border-style: solid;
+  margin-bottom: 50px;
+  padding: 5px;
+  text-transform: uppercase;
+  font-family: "Oswald";
+}
+
+.site-title {
+  font-family: "Oswald";
+  text-transform: uppercase;
+  margin: 30px;
+  font-size: 3.5em;
+}
+
+.front-page-header {
+  font-family: "Oswald";
+  text-transform: uppercase;
+  border-width: 0px;
+  border-bottom-width: 2px;
+  border-style: solid;
+  border-color: #fff;
+  padding: 5px;
+}
+
+.button-row {
+  padding-bottom: 20px;
+}
