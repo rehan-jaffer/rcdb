@@ -1,5 +1,13 @@
 module DrugsHelper
 
+  def icon_helper(name, size="md")
+
+  end
+
+  def rating_dial(n, header)
+    render :partial => "dial", locals: {rating: n, header: header}
+  end
+
   def styled_panel_helper(title, body)
     render :partial => 'panel', locals: {title: title, body: body}
   end
