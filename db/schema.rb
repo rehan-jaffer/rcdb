@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151005095826) do
+ActiveRecord::Schema.define(version: 20151011104455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,45 +30,51 @@ ActiveRecord::Schema.define(version: 20151005095826) do
     t.integer  "drug_id"
     t.string   "drug_type"
     t.integer  "valium_equiv"
-    t.hstore   "affinity"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
   create_table "cannabinoids", force: :cascade do |t|
-    t.hstore   "affinity",    default: {}
-    t.string   "full_name",                null: false
-    t.text     "description",              null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.text     "description", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "drugs", force: :cascade do |t|
     t.string   "primary_name"
-    t.string   "other_names",                                         array: true
+    t.string   "other_names",                 default: [],                  array: true
     t.text     "description"
-    t.string   "trade_names",                                         array: true
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.string   "trade_names",                 default: [],                  array: true
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.integer  "actable_id"
     t.string   "actable_type"
-    t.string   "articles",                                            array: true
-    t.string   "fatalities",                                          array: true
+    t.string   "articles",                    default: [],                  array: true
+    t.string   "fatalities",                  default: [],                  array: true
     t.string   "paper_feed"
     t.string   "report_feed_url"
     t.integer  "google_trend_3_months"
     t.integer  "google_trend_6_months"
     t.integer  "google_trend_9_months"
     t.date     "start_date"
-    t.decimal  "harm_rating",           default: 5.0
-    t.integer  "harm_votes",            default: 0
-    t.decimal  "addiction_rating",      default: 5.0
-    t.integer  "addiction_votes",       default: 0
+    t.decimal  "harm_rating",                 default: 5.0
+    t.integer  "harm_votes",                  default: 0
+    t.decimal  "addiction_rating",            default: 5.0
+    t.integer  "addiction_votes",             default: 0
     t.hstore   "affinity"
     t.string   "full_name"
-    t.hstore   "onset",                 default: {}
-    t.hstore   "half_life",             default: {}
-    t.string   "class_type",            default: "drug"
+    t.hstore   "onset",                       default: {}
+    t.hstore   "half_life",                   default: {}
+    t.string   "class_type",                  default: "drug"
+    t.string   "classes",                     default: [],                  array: true
+    t.string   "molecule_image_file_name"
+    t.string   "molecule_image_content_type"
+    t.integer  "molecule_image_file_size"
+    t.datetime "molecule_image_updated_at"
+    t.string   "molecule_image_source"
+    t.string   "side_effects",                default: [],                  array: true
+    t.string   "references",                  default: [],                  array: true
+    t.string   "solubility",                  default: [],                  array: true
   end
 
   add_index "drugs", ["primary_name"], name: "index_drugs_on_primary_name", using: :btree
@@ -99,7 +105,6 @@ ActiveRecord::Schema.define(version: 20151005095826) do
   end
 
   create_table "psychedelics", force: :cascade do |t|
-    t.string   "classes",                 array: true
     t.string   "subtype"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -136,19 +141,18 @@ ActiveRecord::Schema.define(version: 20151005095826) do
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
   create_table "stimulants", force: :cascade do |t|
-    t.string   "classes",                 array: true
     t.string   "subtype"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",        null: false
+    t.string   "encrypted_password",     default: "",        null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,         null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -157,11 +161,13 @@ ActiveRecord::Schema.define(version: 20151005095826) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        default: 0,  null: false
+    t.integer  "failed_attempts",        default: 0,         null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.string   "user_type",              default: "default"
+    t.boolean  "approved",               default: true
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
