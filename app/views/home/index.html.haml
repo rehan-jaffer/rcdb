@@ -1,19 +1,29 @@
-%h1 Chemical Observer
-%p
-  Welcome to the Chemical Observer project.
+= render :partial => "background"
+%h1.site-title 
+  = image_tag("flash_icon_white.png")
+  Chemical Observer
+
+.row
+  .col-md-12.col-lg-12.button-row
+    = link_to "Benzodiazepines", benzodiazepines_path, class: "btn-rounded-link"
+    = link_to "Stimulants", benzodiazepines_path, class: "btn-rounded-link"
+    = link_to "Opiates", benzodiazepines_path, class: "btn-rounded-link"
+    = link_to "Psychedelics", benzodiazepines_path, class: "btn-rounded-link"
+    = link_to "Dissociatives", benzodiazepines_path, class: "btn-rounded-link"
+
 
 .row
   .col-md-6.col-lg-6
-    %h2 
+    %h2.front-page-header 
       Alerts
       = link_to image_tag("rss.png"), "/alerts.rss"
     = render @alerts
 
   .col-md-6.col-lg-6
-    %h2 Most Recently Added
+    %h2.front-page-header Most Recently Added
     = render @recent
 
 .row
-  .col-md-8.col-lg-8
-  %h2 What is Chemical Observer?
-  %p Chemical Observer is a project founded with the goal of providing both consumers and clinicians dealing with research chemicals (also known as designer drugs or legal highs) with as much information as possible, in order to reduce harm and increase awareness of dangers. Due to taking a harm reduction approach to this matter we understand that no matter what, people will still engage in the recreational use of substances, and the goal is to reduce the overall harm from that use and to alert people to substances that can or should be avoided where possible. Since these substances are new, there is little or no information available either on their effects, or how to treat people who become addicted to them, therefore this site was designed to be a collaborative platform for information sharing that both helps consumers who don't intend to discontinue use make better choices, and allow clinicians treating patients with addictions or complications with more information and greater perspectives on the subject.
+  .col-md-6.col-lg-6.trans-panel
+    %h2.front-page-header What is Chemical Observer?
+    %p Chemical Observer is a project founded with the goal of providing both consumers and clinicians dealing with research chemicals (also known as designer drugs or legal highs) with as much information as possible, in order to reduce harm and increase awareness of dangers. Due to taking a harm reduction approach to this matter we understand that no matter what, people will still engage in the recreational use of substances, and the goal is to reduce the overall harm from that use and to alert people to substances that can or should be avoided where possible. Since these substances are new, there is little or no information available either on their effects, or how to treat people who become addicted to them, therefore this site was designed to be a collaborative platform for information sharing that both helps consumers who don't intend to discontinue use make better choices, and allow clinicians treating patients with addictions or complications with more information and greater perspectives on the subject.
