@@ -150,11 +150,15 @@ body {
 .alert-panel {
   background-color: rgba(1, 1, 1, 0.5);
   text-align: left;
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: #555;
 }
 
 .trans-panel {
   background-color: rgba(1, 1, 1, 0.5);
   text-align: left;
+  border-radius: 10px;
 }
 
 .btn-rounded-link {
@@ -162,15 +166,23 @@ body {
   border-width: 2px;
   border-radius: 5px;
   border-style: solid;
+  margin: 10px;	
   margin-bottom: 50px;
   padding: 5px;
   text-transform: uppercase;
   font-family: "Oswald";
+
+  &:hover {
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
 }
 
 .site-title {
   font-family: "Oswald";
   text-transform: uppercase;
+  padding: 0;
   margin: 30px;
   font-size: 3.5em;
 }
