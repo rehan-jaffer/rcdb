@@ -33,7 +33,7 @@ module ApplicationHelper
 
     content_tag(:div, 
       content_tag(:strong, alert.title) +
-      content_tag(:p, alert.body), :class => "alert #{alert_class}")
+      content_tag(:p, alert.body), :class => "alert alert-panel")
   end
 
   def display_bar(degree)
