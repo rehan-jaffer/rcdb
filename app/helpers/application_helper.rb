@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def dial_color(rating)
+    return "#222"
+  end
+
   def display_other_names(names)
     unless names.nil?
       return names.map { |name| name }.join(", ")
