@@ -95,8 +95,10 @@ body {
 .rating-box {
 
   .panel-heading {
-    background-color: #87CEEB;
+    background-color: #222;
   }
+
+  text-transform: uppercase;
 
 }
 
@@ -159,6 +161,28 @@ body {
   background-color: rgba(1, 1, 1, 0.5);
   text-align: left;
   border-radius: 10px;
+}
+
+.sidebar-nav > li > a {
+  background-color: none;
+  border-width: 2px;
+  border-radius: 5px;
+  border-style: solid;
+  margin: 10px;	
+  padding: 5px;
+  text-transform: uppercase;
+  font-family: "Oswald";
+
+  &:hover {
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  strong {
+    color: #fff;
+    font-weight: normal;
+  }
+
 }
 
 .btn-rounded-link {
