@@ -31,6 +31,7 @@
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+    overflow-x: hidden;
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -40,7 +41,6 @@
 #page-content-wrapper {
     width: 100%;
     position: absolute;
-    padding: 15px;
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -60,8 +60,7 @@
 }
 
 .sidebar-nav li {
-    text-indent: 20px;
-    line-height: 40px;
+    text-indent: 10px;
 }
 
 .sidebar-nav li a {
@@ -82,9 +81,7 @@
 }
 
 .sidebar-nav > .sidebar-brand {
-    height: 65px;
     font-size: 18px;
-    line-height: 60px;
 }
 
 .sidebar-nav > .sidebar-brand a {
