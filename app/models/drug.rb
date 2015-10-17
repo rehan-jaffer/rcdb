@@ -7,6 +7,8 @@ class Drug < ActiveRecord::Base
   has_many :reports
   has_many :metabolites
 
+  include Drug::CitationParser
+
   has_attached_file :molecule_image, :styles => {:medium => "300x200>"}
 
   validates_attachment :molecule_image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
