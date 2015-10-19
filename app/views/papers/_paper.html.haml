@@ -1,2 +1,8 @@
-%li.paper-link
-  = link_to paper.title, paper.link, :data => {:toggle => "popover", :content => paper.abstract, :trigger => "hover", :html => true, :placement => "top"}, :itemprop => "study"
+%tr
+  %td.paper-thumb
+    %i.fa.fa-file-o
+  %td.paper-link
+    = link_to paper.title, paper.link, :itemprop => "study"
+%tr.hidden-row
+  %td{:colspan=>2}
+    = paper.abstract.html_safe
