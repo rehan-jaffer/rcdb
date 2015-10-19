@@ -1,4 +1,4 @@
-.modal.fade
+.modal.fade.submit-report-modal
   .modal-dialog
     .modal-content
       .modal-header
@@ -14,4 +14,10 @@
             %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
             = f.submit :class => "btn btn-primary"
 
-= render reports.approved
+= link_to "Submit Report", "javascript:void(0)", :class => "btn btn-primary btn-flat report-modal-trigger"
+
+- if reports.approved.empty?
+  .submit-reports
+    %em No reports have been submitted yet, be the first! Please make sure to follow the community guidelines to ensure your entry is approved.
+- else
+  = render reports.approved
