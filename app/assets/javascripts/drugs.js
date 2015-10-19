@@ -16,4 +16,8 @@ $(function() {
   $(".drug-class-type").addClass("btn")
   $(".drug-class-type").addClass("btn-default")
 
+  $(".report-modal-trigger").on("click", function() {
+    $(".submit-report-modal").modal("show");
+  });
+
 });
