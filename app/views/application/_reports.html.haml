@@ -1,9 +1,17 @@
-%h3 Consumer Reports
+.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+        %h4.modal-title Consumer Reports
+      .modal-body
+        = simple_form_for(@report) do |f|
+          = f.input :title
+          = f.input :report
+          = f.hidden_field :drug_id, :value => drug_id
+          .modal-footer
+            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+            = f.submit :class => "btn btn-primary"
 
 = render reports.approved
-= simple_form_for(@report) do |f|
-  = f.input :title
-  = f.input :report
-  = f.hidden_field :drug_id, :value => drug_id
-  = f.submit :class => "btn btn-primary"
-
