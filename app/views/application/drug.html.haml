@@ -48,7 +48,7 @@
   .row
     %h4.description-header Description
     %blockquote.drug-description
-      %section{:itemprop=>"description"}= @drug.description.to_html.html_safe
+      %section{:itemprop=>"description"}= @drug.to_html
 
   .row
     %h4.drug-trend-header Demand trend graph
@@ -72,7 +72,8 @@
 
   .row
     %h3.drug-paper-header Papers
-    .papers-container.md-8
+    .papers-container.col-md-12.col-lg-12
+    %table.table.table-bordered.table-zebra
       = render @drug.papers
 
   .row
