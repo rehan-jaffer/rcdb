@@ -3,6 +3,15 @@
     %i.fa.fa-file-o
   %td.paper-link
     = link_to paper.title, paper.link, :itemprop => "study"
+    = "(#{paper.publication_date})"
+  %td.paper-journal
+    %strong
+      = paper.journal
+%tr.authors-row
+  %td{:colspan=>3}
+    %em
+      = paper.authors.join(", ")
 %tr.hidden-row
-  %td{:colspan=>2}
-    = paper.abstract.html_safe
+  %td{:colspan=>3}
+    .paper-abstract
+      = paper.abstract.html_safe
