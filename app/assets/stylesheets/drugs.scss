@@ -224,3 +224,21 @@ body {
 .button-row {
   padding-bottom: 20px;
 }
+
+.minimize-link {
+  margin-right: auto;
+  margin-left: auto;
+
+  a, a:visited, a:hover {	
+    color: #fff;
+  }
+
+}
+
+.paper-abstract {
+  whitespace: pre-wrap;
+}
+
+.papers-container {
+  display: none;
+}
