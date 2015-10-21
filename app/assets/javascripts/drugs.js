@@ -20,4 +20,10 @@ $(function() {
     $(".submit-report-modal").modal("show");
   });
 
+//  $(".hidden-row").hide();
+
+  $(".paper-toggle").on("click", function() {
+    $(".papers-container").toggle();
+  });
+
 });
