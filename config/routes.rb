@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :alerts
     resources :benzodiazepines
     resources :cannabinoids
+    resources :metabolites
     resources :dashboard
   end
 
