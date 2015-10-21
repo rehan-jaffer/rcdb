@@ -73,14 +73,21 @@
               %td.receptor-name.col-lg-3= bkey
               %td.receptor-value.col-lg-3= @drug.affinity[bkey]
 
-  .row
-    %h3.drug-paper-header Papers
-    .papers-container.col-md-12.col-lg-12
-    %table.table.table-bordered.table-zebra
-      = render @drug.papers
+  - unless @drug.papers.empty?
+    .row
+      %h3.drug-paper-header 
+        %span.paper-toggle 
+          %i.fa.fa-file-o
+          +
+        Papers
+      .papers-container.col-md-12.col-lg-12
+        %table.table.table-bordered.table-zebra
+          = render @drug.papers
 
-  .row
-    %h3.drug-articles-header Articles
+  - unless @drug.articles.nil?
+    .row
+      %h3.drug-articles-header Articles
 
-  .row.drug-fatalities-header
-    %h3 Fatalities
+  - unless @drug.fatalities.nil?
+    .row.drug-fatalities-header
+      %h3 Fatalities
