@@ -1,7 +1,5 @@
 %article{:itemscope=>"", :itemtype=>"http://schema.org/Drug", class: "drug-container #{@drug.class_type}-container"}
   .row
-    = link_to "<- Minimize", "javascript:void(0);", class: "minimize-link"
-  .row
     .col-lg-4.col-md-4.drug-image
       - unless @drug.molecule_image.nil?
         = image_tag(@drug.molecule_image(:medium), itemprop: "image")
