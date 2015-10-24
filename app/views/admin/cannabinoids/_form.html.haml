@@ -1,36 +1,4 @@
 = simple_form_for([:admin, @cannabinoid]) do |f|
-  %h2 New Cannabinoid
-  .row
-    = f.input :primary_name
-    = f.input :id, as: :hidden
-  .row
-    = array_input_helper(@cannabinoid, :trade_names)
-  .row
-    = array_input_helper(@cannabinoid, :other_names)
-  .row
-    = array_input_helper(@cannabinoid, :classes)
-  .row
-    = array_input_helper(@cannabinoid, :side_effects)
-  .row
-    = array_input_helper(@cannabinoid, :solubility)
-  .row
-    = f.input :harm_rating
-  .row
-    = f.input :addiction_rating
-  .row
-    = f.input :molecule_image
-  .row
-    = f.input :full_name
-  .row
-    = f.input :paper_feed
-  .row
-    = f.input :description
-  .row
-    = onset_inputs_helper(f)
-  .row
-    %h3 Receptor Affinities
-    = affinity_inputs_helper(f, @receptor_list)
-  .row
-    = array_input_helper(@cannabinoid, :references)
+  = drug_inputs(f, @cannabinoid, @receptor_list)
   .row
     = f.submit
