@@ -1,0 +1,32 @@
+.row
+  = f.input :primary_name
+  = f.input :id, as: :hidden
+.row
+  = array_input_helper(drug, :trade_names)
+.row
+  = array_input_helper(drug, :other_names)
+.row
+  = array_input_helper(drug, :classes)
+.row
+  = array_input_helper(drug, :side_effects)
+.row
+  = array_input_helper(drug, :solubility)
+.row
+  = f.input :harm_rating
+.row
+  = f.input :addiction_rating
+.row
+  = f.input :molecule_image
+.row
+  = f.input :full_name
+.row
+  = f.input :paper_feed
+.row
+  = f.input :description
+.row
+  = onset_inputs_helper(f)
+.row
+  %h3 Receptor Affinities
+  = affinity_inputs_helper(f, receptor_list)
+.row
+  = array_input_helper(drug, :references)
