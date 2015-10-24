@@ -1,35 +1,5 @@
 = simple_form_for([:admin, @benzo]) do |f|
-  %h2 New Benzodiazepine
-  .row
-    = f.input :primary_name
-    = f.input :id, as: :hidden
-  .row
-    = array_input_helper(@benzo, :trade_names, 2, 5)
-  .row
-    = array_input_helper(@benzo, :other_names)
-  .row
-    = array_input_helper(@benzo, :classes)
-  .row
-    = array_input_helper(@benzo, :side_effects, 8, 5)
-  .row
-    = array_input_helper(@benzo, :solubility, 2, 6)
-  .row
-    = f.input :molecule_image
-  .row
-    = f.input :molecule_image_source
-  .row
-    = f.input :full_name
-  .row
-    = f.input :paper_feed
-  .row
-    = f.input :description
-  .row
-    = onset_inputs_helper(f)
-  .row
-    %h3 Receptor Affinities
-    = affinity_inputs_helper(f, @receptor_list)
-  .row
-    = array_input_helper(@benzo, :references, 8, 8)
+  = drug_inputs(f, @benzo, @receptor_list)
   .row
     = f.input :valium_equiv
   .row
