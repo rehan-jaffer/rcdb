@@ -1,7 +1,1 @@
-.row.drug-row
-  .col-md-3
-    = link_to benzodiazepine.primary_name, benzodiazepine_path(benzodiazepine.primary_name)
-  .col-md-4
-    = display_other_names(benzodiazepine.other_names)
-  .col-md-3
-    = display_trade_names(benzodiazepine.trade_names)
+= render :partial => "drugs/drug", :locals => {:drug => benzodiazepine}
