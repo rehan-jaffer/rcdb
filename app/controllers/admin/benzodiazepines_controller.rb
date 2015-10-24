@@ -8,7 +8,7 @@ class Admin::BenzodiazepinesController < Admin::DrugsController
   def create
     @benzo = Benzodiazepine.new(benzo_attributes)
     if @benzo.save
-      redirect_to admin_benzodiazepines_index_path
+      redirect_to admin_benzodiazepines_path
     else
       render :new
       return
