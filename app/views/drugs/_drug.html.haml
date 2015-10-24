@@ -2,8 +2,10 @@
   .col-md-2
     = image_tag(drug.molecule_image(:thumb))
   .col-md-3
-    = link_to drug.primary_name, select_drug_path(drug)
-    = drug.full_name
+    .drug-link
+      = link_to drug.primary_name, select_drug_path(drug)
+    .drug-name
+      = drug.full_name
   .col-md-4
     = display_other_names(drug.other_names)
   .col-md-3
