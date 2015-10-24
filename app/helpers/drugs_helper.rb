@@ -1,5 +1,9 @@
 module DrugsHelper
 
+  def drug_inputs(form_object, drug, receptor_list)
+    render :partial => "forms/drug", :locals => {:f => form_object, :drug => drug, :receptor_list => receptor_list}
+  end
+
   def icon_helper(name, size="md")
 
   end
