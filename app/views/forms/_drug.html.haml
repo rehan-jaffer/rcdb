@@ -22,7 +22,7 @@
 .row
   = f.input :paper_feed
 .row
-  = f.input :description
+  = f.input :description, as: :text, :input_html => {'rows' => 20}
 .row
   = onset_inputs_helper(f)
 .row
