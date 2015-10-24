@@ -3,7 +3,7 @@ module Drug::CitationParser
   def parse!
 
     if self.description.nil?
-      return ""
+      self.description = ""
     end
 
     citations = []
