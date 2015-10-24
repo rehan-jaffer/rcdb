@@ -1,6 +1,11 @@
 module Drug::CitationParser
 
   def parse!
+
+    if self.description.nil?
+      return ""
+    end
+
     citations = []
 
     self.description.scan(/\[(http[^\[\]]*)\]/) do |match|
