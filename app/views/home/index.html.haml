@@ -21,7 +21,7 @@
 
   .col-md-6.col-lg-6
     %h2.front-page-header Most Recently Added
-    = render @recent
+    = render :partial => "recent", locals: {:recent => @recent}
 
 .row
   .col-md-6.col-lg-6.trans-panel
