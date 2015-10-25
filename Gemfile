@@ -43,11 +43,15 @@ gem 'capistrano'
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'capistrano-rails', group: :development
-gem 'capistrano-passenger', group: :development
-gem 'capistrano-bundler', group: :development
-gem 'capistrano-rvm', group: :development
-gem 'seed_dump', group: :development
+group :development do
+  gem 'capistrano-rails'
+  gem 'capistrano-passenger'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rvm'
+  gem 'capistrano-passenger'
+  gem 'seed_dump'
+end
 
 group :test do
 
