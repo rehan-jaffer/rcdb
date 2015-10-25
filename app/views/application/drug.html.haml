@@ -18,22 +18,22 @@
         = display_side_effects(@drug.side_effects)
     .col-lg-6.col-md-6
       %h4.data-header Extra Data
-    - unless @drug.other_names.empty?
-      %h4.drug-other-names
-        Other names:
-        = display_other_names(@drug.other_names)
-    - unless @drug.classes.empty?
-      %h4
-        Classes:
-        = display_other_names(@drug.classes)
-    - unless @drug.solubility.empty?
-      %h4
-        Solubility:
-        = display_other_names(@drug.solubility)
-    - unless @drug.trade_names.empty?
-      %h4
-        Trade names:
-        = display_trade_names(@drug.trade_names)
+      - unless @drug.other_names.empty?
+        %h4.drug-other-names
+          Other names:
+          = display_other_names(@drug.other_names)
+      - unless @drug.classes.empty?
+        %h4
+          Classes:
+          = display_other_names(@drug.classes)
+      - unless @drug.solubility.empty?
+        %h4
+          Solubility:
+          = display_other_names(@drug.solubility)
+      - unless @drug.trade_names.empty?
+        %h4
+          Trade names:
+          = display_trade_names(@drug.trade_names)
   .row
     .col-md-4.col-lg-4.rating-box
       = rating_dial(@drug.harm_rating, "Harm Rating")
