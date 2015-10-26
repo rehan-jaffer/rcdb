@@ -1,0 +1,2 @@
+class OpiatesController < DrugController
+end
