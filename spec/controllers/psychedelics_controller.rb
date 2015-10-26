@@ -2,6 +2,15 @@ require 'rails_helper'
 
 RSpec.describe PsychedelicsController do
 
+  before(:all) do
+
+    @psychedelic = Psychedelic.new
+    @psychedelic.primary_name = "Mescaline"
+    @psychedelic.description = "A hallucinogen"
+    @psychedelic.save
+
+  end
+
   describe "GET index" do
 
     it "responds to a basic get request" do
@@ -25,7 +34,7 @@ RSpec.describe PsychedelicsController do
 
     it "assigns an object for the request with the psychedelic type" do
       get :show, :id => "Mescaline"
-      expect(assigns(:drug).class).to be "Psychedelic"
+      expect(assigns(:drug).class).to be Psychedelic
     end
 
   end
