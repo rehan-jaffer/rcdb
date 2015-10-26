@@ -1,2 +1,2 @@
-class OpiatesController < DrugController
+class OpiatesController < DrugsController
 end
