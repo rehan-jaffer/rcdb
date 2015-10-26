@@ -1,0 +1,3 @@
+class SpyPlugin
+
+end
