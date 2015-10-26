@@ -2,6 +2,22 @@
   = f.input :primary_name
   = f.input :id, as: :hidden
 .row
+  = f.input :cid
+.row
+  = f.input :description, as: :text, :input_html => {'rows' => 20}
+.row
+  = f.input :harm_rating
+.row
+  = f.input :harm_votes
+.row
+  = f.input :addiction_rating
+.row
+  = f.input :addiction_votes
+.row
+  = f.input :molecule_image
+.row
+  = f.input :full_name
+.row
   = array_input_helper(drug, :trade_names)
 .row
   = array_input_helper(drug, :other_names)
@@ -12,17 +28,7 @@
 .row
   = array_input_helper(drug, :solubility)
 .row
-  = f.input :harm_rating
-.row
-  = f.input :addiction_rating
-.row
-  = f.input :molecule_image
-.row
-  = f.input :full_name
-.row
   = f.input :paper_feed
-.row
-  = f.input :description, as: :text, :input_html => {'rows' => 20}
 .row
   = onset_inputs_helper(f)
 .row
