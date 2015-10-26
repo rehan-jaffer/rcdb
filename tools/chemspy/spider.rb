@@ -1,4 +1,6 @@
 require './plugin'
+require 'active_record'
+require 'yaml'
 require 'pp'
 
 class Spider
@@ -39,6 +41,17 @@ class Spider
     end
   end
 
+end
+
+begin
+  connection_details = YAML::load(File.open('config/database.yml'))
+  ActiveRecord::Base.establish_connection(connection_details)
+rescue StandardError => e
+  puts "Could not connect to database: #{e.message}"
+  exit
+end
+
+class Entry
 end
 
 spider = Spider.new
