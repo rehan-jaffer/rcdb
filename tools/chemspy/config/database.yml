@@ -1,0 +1,7 @@
+host: 'localhost'
+adapter: 'postgresql'
+database: 'rcdb_data'
+username: 'rcdb'
+password: <%= ENV['DATABASE_PASSWORD'] %>
+encoding: 'utf8'
+pool: 5
