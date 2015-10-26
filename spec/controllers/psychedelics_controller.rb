@@ -11,6 +11,16 @@ RSpec.describe PsychedelicsController do
 
   end
 
+  describe "general properties" do
+
+   it "is descended from DrugsController" do
+
+     expect(PsychedelicsController.superclass).to eq DrugsController
+
+   end
+
+  end
+
   describe "GET index" do
 
     it "responds to a basic get request" do
