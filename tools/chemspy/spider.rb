@@ -36,9 +36,11 @@ class Spider
     @loaded.each do |plugin|
       eval("@modules << #{plugin}.new")
     end
+    data = []
     @modules.each do |mod|
-      mod.refresh
+      data << mod.refresh
     end
+    data
   end
 
 end
@@ -51,9 +53,42 @@ rescue StandardError => e
   exit
 end
 
-class Entry
+class Entry < ActiveRecord::Base
 end
 
 spider = Spider.new
 spider.load_plugins
-spider.run
+data = spider.run
+
+data.each do |datum|
+
+  datum.each do |list|
+
+    list.each do |entry|
+
+    pp entry
+
+    @entry = Entry.new
+    @entry.title = entry[:title]
+    @entry.body = entry[:text]
+    @entry.hashed = entry[:hash]
+    @entry.save
+
+    unless entry["comments"].nil?
+
+      entry["comments"].each do |comment|
+        @entry = Entry.new
+        pp comment
+        @entry.title = comment[:title]
+        @entry.body = comment[:text]
+        @entry.hashed = comment[:hash]
+        @entry.save
+      end
+
+    end
+
+    end
+
+  end
+
+end
