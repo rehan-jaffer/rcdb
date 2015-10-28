@@ -38,7 +38,7 @@ class Admin::CannabinoidsController < Admin::DrugsController
   end
 
   def cannabinoid_attributes
-    params.require(:cannabinoid).permit(:id, :primary_name, :valium_equiv, :description, :half_life, :full_name, :paper_feed, :onset, affinity: Cannabinoid.stored_attributes[:affinity], trade_names: [], other_names: [], classes: [], side_effects: [], solubility: [])
+    params.require(:cannabinoid).permit(drug_attributes | affinity: Cannabinoid.stored_attributes[:affinity])
   end
 
 end
