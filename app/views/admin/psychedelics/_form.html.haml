@@ -1,0 +1,4 @@
+= simple_form_for([:admin, @psychedelic]) do |f|
+  = drug_inputs(f, @psychedelic, @receptor_list)
+  .row
+    = f.submit
