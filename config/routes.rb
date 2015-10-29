@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  resources :benzodiazepines
-  resources :cannabinoids
-  resources :stimulants
-  resources :psychedelics
+  resources :benzodiazepines, only: [:index, :show]
+  resources :cannabinoids, only: [:index, :show]
+  resources :stimulants, only: [:index, :show]
+  resources :psychedelics, only: [:index, :show]
+  resources :dissociatives, only: [:index, :show]
   resources :reports
   resources :home, :only => [:index]
   resources :drugs
