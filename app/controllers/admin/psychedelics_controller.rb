@@ -1,7 +1,7 @@
 class Admin::PsychedelicsController < Admin::DrugsController
 
   def new
-    @dissociative = Psychedelic.new
+    @psychedelic = Psychedelic.new
     @receptor_list = Psychedelic.receptor_list
   end
 
@@ -38,7 +38,7 @@ class Admin::PsychedelicsController < Admin::DrugsController
   end
 
   def psychedelic_attributes
-    params.require(:psychedelic).permit(drug_attributes | affinity: Psychedelic.stored_attributes[:affinity])
+    params.require(:psychedelic).permit(drug_attributes | [affinity: Psychedelic.stored_attributes[:affinity]])
   end
 
 end
