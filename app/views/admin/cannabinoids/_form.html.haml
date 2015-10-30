@@ -1,4 +1,4 @@
-= simple_form_for([:admin, @cannabinoid]) do |f|
-  = drug_inputs(f, @cannabinoid, @receptor_list)
+= simple_form_for([:admin, @drug]) do |f|
+  = drug_inputs(f, @drug, @receptor_list)
   .row
     = f.submit
