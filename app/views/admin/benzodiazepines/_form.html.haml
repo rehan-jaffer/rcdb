@@ -1,5 +1,5 @@
-= simple_form_for([:admin, @benzo]) do |f|
-  = drug_inputs(f, @benzo, @receptor_list)
+= simple_form_for([:admin, @drug]) do |f|
+  = drug_inputs(f, @drug, @receptor_list)
   .row
     = f.input :valium_equiv
   .row
