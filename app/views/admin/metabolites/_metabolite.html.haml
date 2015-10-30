@@ -1,0 +1,6 @@
+%tr
+  %td= metabolite.name
+  %td= metabolite.drug.primary_name
+  %td
+    = link_to "Edit", edit_admin_metabolite_path(metabolite)
+    = link_to "Delete", admin_metabolites_path(metabolite, method: :destroy)

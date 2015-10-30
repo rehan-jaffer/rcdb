@@ -1,0 +1,5 @@
+= simple_form_for([:admin, @metabolite]) do |f|
+  = f.collection_select(:drug_id, Drug.all, :id, :primary_name, {:selected => @metabolite.drug_id})
+  = f.input :name
+  = f.input :active, as: :boolean
+  = f.submit

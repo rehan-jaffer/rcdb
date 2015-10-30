@@ -1,0 +1,9 @@
+%h1 Metabolites
+= link_to "New", new_admin_metabolite_path, class: "btn btn-primary btn-flat"
+
+%table.table.table-bordered
+  %tr
+    %td Name
+    %td Parent Compound
+    %td Actions
+  = render @metabolites
