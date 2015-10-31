@@ -38,7 +38,7 @@
 /*css for full size background image*/
   background: url(/assets/felt-background.png) repeat fixed; 
   
-  background-color: #060;
+  background-color: #000;
   color: #fff;
   text-align: center;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
@@ -170,4 +170,20 @@
   .cover-container {
     width: 700px;
   }
+}
+
+.post {
+  padding-top: 0;
+  margin-top: 0;
+  padding: 15px;
+
+  h2 {
+    padding: 0;
+    margin: 0;
+  }
+
+}
+
+.post-title {
+  text-align: left;
 }
