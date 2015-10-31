@@ -1,0 +1,2 @@
+COUNTRY_CODES = []
+FULL_NAMES = {}
