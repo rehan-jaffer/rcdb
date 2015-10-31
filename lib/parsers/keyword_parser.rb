@@ -5,7 +5,7 @@ module KeywordParser
     stripped_text = text.gsub(/[^\w\d ]/, "").downcase
     tokens = stripped_text.split(" ")
     keywords = Keyword.all
-    new_text = ""
+    new_text = text
     keywords.each do |keyword|
       if tokens.include?(keyword.keyword)
         new_text = text.gsub(keyword.keyword, tooltip(keyword.keyword, keyword.definition))
