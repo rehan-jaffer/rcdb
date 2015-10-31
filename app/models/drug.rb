@@ -21,7 +21,7 @@ class Drug < ActiveRecord::Base
 
   # this is a hacky fix
   def eliminate_empties
-    ["classes", "trade_names", "other_names", "side_effects", "references", "solubility"].each do |field|
+    ["classes", "trade_names", "other_names", "side_effects", "solubility"].each do |field|
       unless send(field).nil?
         send(field).reject! { |item| item.empty? }
       end 
