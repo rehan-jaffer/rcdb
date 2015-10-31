@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     resources :metabolites
     resources :stimulants
     resources :dashboard
+    resources :posts
+    resources :keywords
   end
 
   namespace :moderator do
