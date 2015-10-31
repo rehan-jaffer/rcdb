@@ -3,7 +3,7 @@ module DrugsHelper
   # added kp as shorthand for KeywordParser
 
   def kp(text)
-    KeywordParser.scan(text)
+    LinkParser.parse(KeywordParser.scan(text)).html_safe
   end
 
   def drug_inputs(form_object, drug, receptor_list)
