@@ -4,6 +4,22 @@ module ApplicationHelper
     return "#222"
   end
 
+  def icon(icon_name, size=1, white=false)
+    icon_size = case size
+      when 1
+        "fa-lg"
+      when 2
+        "fa-2x"
+      when 3
+        "fa-3x"
+      when 4
+        "fa-4x"
+      when 5
+        "fa-5x"
+      end
+    content_tag(:i, "", class: "fa fa-#{icon_name} #{icon_size}").html_safe
+  end
+
   def display_other_names(names)
     unless names.nil?
       return names.map { |name| name }.join(", ")
