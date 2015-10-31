@@ -1,6 +1,7 @@
 class PsychedelicsController < DrugsController
 
   def index
+    @title = "Psychedelics"
     @psychedelics = Psychedelic.all.to_a
   end
 

@@ -1,6 +1,7 @@
 class DissociativesController < DrugsController
 
   def index
+    @title = "Dissociatives"
     @dissociatives = Dissociative.all.to_a
   end
 

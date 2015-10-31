@@ -1,6 +1,7 @@
 class BenzodiazepinesController < DrugsController
 
   def index
+    @title = "Benzodiazepines"
     @benzodiazepines = Benzodiazepine.all.to_a
   end
 

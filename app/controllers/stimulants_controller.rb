@@ -1,6 +1,7 @@
 class StimulantsController < ApplicationController
 
   def index
+   @title = "Stimulants"
    @stimulants = Stimulant.all
   end
 

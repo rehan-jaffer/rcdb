@@ -1,6 +1,7 @@
 class CannabinoidsController < DrugsController
 
   def index
+    @title = "Cannabinoids"
     @cannabinoids = Cannabinoid.all
   end
 
