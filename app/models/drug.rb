@@ -7,6 +7,7 @@ class Drug < ActiveRecord::Base
   has_many :reports
   has_many :metabolites
   has_many :localities
+  has_many :references
 
   include Drug::CitationParser
 
