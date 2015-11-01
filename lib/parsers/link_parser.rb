@@ -10,6 +10,8 @@ module LinkParser
 
     n = 0
 
+    text += "<h4 class='citation-header'>+ Citations</h4>\r\n<ul class='citation-listing'>\r\n"
+
     citations.each do |citation|
 
       n += 1
@@ -18,6 +20,9 @@ module LinkParser
       text += "\r\n<li>#{n.to_s}. <a href='#{link}' id='citation-#{n}'>#{link}</a></li>\r\n"
 
     end
+
+    text += "</ul>\r\n"
+
     text
   end
 
