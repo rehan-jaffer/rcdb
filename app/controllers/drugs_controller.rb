@@ -10,7 +10,7 @@ class DrugsController < ApplicationController
 
   def index
    @title = self.class.get_model_name.pluralize
-   @drugs = self.class.get_model.all
+   @drugs = self.class.get_model.all.to_a
   end
 
   def show
