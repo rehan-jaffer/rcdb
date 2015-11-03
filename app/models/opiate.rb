@@ -1,0 +1,2 @@
+class Opiate < Drug
+end
