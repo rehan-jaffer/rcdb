@@ -12,12 +12,12 @@ RSpec.describe OpiatesController do
 
     it "responds to a basic request" do
       get :index
-      expect(response.http_code).to be 200
+      expect(response.response_code).to be 200
     end
 
     it "assigns an array of opiates" do
       get :index
-      expect(assigns(:opiates).class).to be Array
+      expect(assigns(:drugs).class).to be Array
     end
 
   end
