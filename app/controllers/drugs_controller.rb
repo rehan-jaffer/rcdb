@@ -14,8 +14,8 @@ class DrugsController < ApplicationController
   end
 
   def show
-    @drug = get_model.where(:primary_name => params[:id]).last
-    @title = "#{get_model_name} / #{@drug.primary_name}"
+    @drug = self.class.get_model.where(:primary_name => params[:id]).last
+    @title = "#{self.class.get_model_name} / #{@drug.primary_name}"
     @report = Report.new
     render 'application/drug'
     return
