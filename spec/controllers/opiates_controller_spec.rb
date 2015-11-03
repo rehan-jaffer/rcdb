@@ -1,6 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe OpiatesController, type: :controller do
+RSpec.describe OpiatesController do
+
+  before(:all) do
+    opiate = Opiate.new
+    opiate.primary_name = "Morphine"
+    opiate.save
+  end
 
   describe "GET index" do
 

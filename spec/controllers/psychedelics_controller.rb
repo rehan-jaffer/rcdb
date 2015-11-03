@@ -14,10 +14,16 @@ RSpec.describe PsychedelicsController do
   describe "general properties" do
 
    it "is descended from DrugsController" do
-
      expect(PsychedelicsController.superclass).to eq DrugsController
-
    end
+
+    it "provides model name upon request" do
+      expect(PsychedelicsController.get_model_name).to eq("Psychedelic")
+    end
+
+    it "provides model upon request" do
+      expect(PsychedelicsController.get_model).to eq(Psychedelic)
+    end
 
   end
 
