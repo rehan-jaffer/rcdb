@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :stimulants, only: [:index, :show]
   resources :psychedelics, only: [:index, :show]
   resources :dissociatives, only: [:index, :show]
+  resources :opiates, only: [:index, :show]
   resources :reports
   resources :home, :only => [:index]
   resources :drugs
