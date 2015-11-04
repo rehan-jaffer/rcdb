@@ -8,7 +8,7 @@ class Admin::KeywordsController < Admin::AdminController
     @keyword = Keyword.new(keyword_params)
     @keyword.save
     if @keyword
-      redirect_to admin_keyword_params
+      redirect_to admin_keywords_path
     else
       flash[:errors] = @keyword.errors
       render :new
