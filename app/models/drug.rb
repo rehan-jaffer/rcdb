@@ -33,8 +33,7 @@ class Drug < ActiveRecord::Base
   end
 
   def to_html
-    parse!
-    description.html_safe
+    LinkParser.parse(description).html_safe
   end
 
   def inception_date
