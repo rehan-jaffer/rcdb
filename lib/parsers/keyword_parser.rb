@@ -8,14 +8,14 @@ module KeywordParser
     new_text = text
     keywords.each do |keyword|
       if tokens.include?(keyword.keyword)
-        new_text = text.gsub(keyword.keyword, tooltip(keyword.keyword, keyword.definition))
+        new_text = text.gsub(" #{keyword.keyword} ", " " + tooltip(keyword.keyword, keyword.definition) + " ")
       end
     end
     new_text
   end
 
   def self.tooltip(word, text)
-    %Q(<a data-toggle="tooltip" data-placement="top" title="#{text.html_safe}">#{word.capitalize}</a>).html_safe
+    %Q(<a data-toggle="tooltip" data-placement="top" class="keyword" title="#{text.html_safe}">#{word.capitalize}</a>).html_safe
   end
 
 end
