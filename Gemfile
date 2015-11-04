@@ -25,10 +25,10 @@ gem 'cancancan'
 gem 'newrelic_rpm'
 gem 'therubyracer'
 gem 'microdata'
+gem 'ohm'
 
 # code quality/metric tools
 gem 'rubocop'
-gem 'simplecov'
 gem 'traceroute'
 gem 'bullet'
 gem 'brakeman'
@@ -58,6 +58,7 @@ group :test do
   gem 'cucumber-rails', :require => false
   gem 'mutant'
   gem 'capybara'
+  gem 'simplecov'
 
 end
 
