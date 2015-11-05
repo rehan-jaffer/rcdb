@@ -1,2 +1,11 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+# A lot of things in this file are going to need refactoring most likely
+
+
+$(document).ready(function() {
+  $(".drug-description").on("click", function() {
+    $(this).hide();
+    $(".drug-description-edit").show();
+    // this won't work, as the text is post-processing? Replace it once you've figured things out
+    $(".drug-description-edit").val($(".drug-description").text());
+  })
+});
