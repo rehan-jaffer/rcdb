@@ -288,3 +288,34 @@ body {
 .citation-header {
   cursor: pointer;
 } 
+
+.vote-button {
+  float: left;
+}
+
+.vote-count {
+  float: right;
+}
+
+.drug-side-effects {
+  margin: 0;
+  padding: 0;
+}
+
+.drug-side-effect {
+  width: 100%;
+  list-style-type: none;
+  border: 0;
+  border-style: solid;
+  border-left-width: 2px;
+  padding: 5px;
+  font-size: 1.1em;
+  font-family: "Source Sans Pro";
+  margin-bottom: 3px;
+  border-color: #ccc;
+
+  &:hover {
+    border-color: #000;
+  }
+
+}
