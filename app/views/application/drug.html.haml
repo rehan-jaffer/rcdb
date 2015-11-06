@@ -74,7 +74,7 @@
     %h4.drug-trend-header Demand trend graph
     = display_google_trends_graph(@drug.primary_name)
   .row
-    = render 'reports', :reports => @drug.reports, :drug_id => @drug.drug.id
+    = render 'reports', :reports => @drug.reports, :drug_id => @drug.id
 
   .row
     - unless @drug.affinity.nil?
