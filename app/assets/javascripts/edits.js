@@ -1,5 +1,3 @@
-# A lot of things in this file are going to need refactoring most likely
-
 
 $(document).ready(function() {
   $(".drug-description").on("click", function() {
