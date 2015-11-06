@@ -4,6 +4,8 @@ module LinkParser
 
     citations = []
 
+    text = (text.nil?) ? "" : text
+
     text.scan(/\[(http[^\[\]]*)\]/) do |match|
       citations << match
     end
