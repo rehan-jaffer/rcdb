@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151011104455) do
+ActiveRecord::Schema.define(version: 20151105151024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,28 +29,33 @@ ActiveRecord::Schema.define(version: 20151011104455) do
   create_table "benzodiazepines", force: :cascade do |t|
     t.integer  "drug_id"
     t.string   "drug_type"
-    t.integer  "valium_equiv"
+    t.decimal  "valium_equiv"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
   create_table "cannabinoids", force: :cascade do |t|
-    t.text     "description", null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "dissociatives", force: :cascade do |t|
+    t.string   "subtype"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "drugs", force: :cascade do |t|
     t.string   "primary_name"
-    t.string   "other_names",                 default: [],                  array: true
+    t.string   "other_names",                 default: [],                      array: true
     t.text     "description"
-    t.string   "trade_names",                 default: [],                  array: true
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.string   "trade_names",                 default: [],                      array: true
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.integer  "actable_id"
     t.string   "actable_type"
-    t.string   "articles",                    default: [],                  array: true
-    t.string   "fatalities",                  default: [],                  array: true
+    t.string   "articles",                    default: [],                      array: true
+    t.string   "fatalities",                  default: [],                      array: true
     t.string   "paper_feed"
     t.string   "report_feed_url"
     t.integer  "google_trend_3_months"
@@ -66,15 +71,21 @@ ActiveRecord::Schema.define(version: 20151011104455) do
     t.hstore   "onset",                       default: {}
     t.hstore   "half_life",                   default: {}
     t.string   "class_type",                  default: "drug"
-    t.string   "classes",                     default: [],                  array: true
+    t.string   "classes",                     default: [],                      array: true
     t.string   "molecule_image_file_name"
     t.string   "molecule_image_content_type"
     t.integer  "molecule_image_file_size"
     t.datetime "molecule_image_updated_at"
     t.string   "molecule_image_source"
-    t.string   "side_effects",                default: [],                  array: true
-    t.string   "references",                  default: [],                  array: true
-    t.string   "solubility",                  default: [],                  array: true
+    t.string   "side_effects",                default: [],                      array: true
+    t.string   "references",                  default: [],                      array: true
+    t.string   "solubility",                  default: [],                      array: true
+    t.string   "cid"
+    t.json     "chemdata"
+    t.string   "trends_array"
+    t.string   "trends_buy_array"
+    t.boolean  "research_chemical",           default: true
+    t.string   "effects",                     default: "--- []\n"
   end
 
   add_index "drugs", ["primary_name"], name: "index_drugs_on_primary_name", using: :btree
@@ -88,6 +99,22 @@ ActiveRecord::Schema.define(version: 20151011104455) do
     t.string   "property"
   end
 
+  create_table "keywords", force: :cascade do |t|
+    t.string   "keyword"
+    t.text     "definition"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "localities", force: :cascade do |t|
+    t.string   "country_code"
+    t.boolean  "legal"
+    t.integer  "drug_id"
+    t.string   "addition"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "metabolites", force: :cascade do |t|
     t.integer  "drug_id",                   null: false
     t.string   "name",                      null: false
@@ -96,18 +123,45 @@ ActiveRecord::Schema.define(version: 20151011104455) do
     t.datetime "updated_at",                null: false
   end
 
+  create_table "opiates", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "papers", force: :cascade do |t|
     t.string  "title",            null: false
     t.integer "drug_id",          null: false
     t.string  "link",             null: false
     t.text    "abstract",         null: false
     t.integer "publication_date"
+    t.string  "authors",                       array: true
+    t.integer "pmid"
+    t.string  "journal"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "tags"
+    t.string   "author",     default: "Administrator"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   create_table "psychedelics", force: :cascade do |t|
     t.string   "subtype"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "references", force: :cascade do |t|
+    t.integer  "drug_id",          null: false
+    t.integer  "reference_number", null: false
+    t.string   "reference_url",    null: false
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "reports", force: :cascade do |t|
@@ -181,5 +235,15 @@ ActiveRecord::Schema.define(version: 20151011104455) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "drug_id"
+    t.integer  "quantity"
+    t.string   "property"
+    t.string   "ip_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "hashed"
+  end
 
 end
