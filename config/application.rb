@@ -25,8 +25,12 @@ module Rcdb
     config.autoload_paths << Rails.root.join('lib','parsers')
     config.autoload_paths << Rails.root.join('lib','api')
     config.autoload_paths << Rails.root.join('lib','generators')
+    config.autoload_paths << Rails.root.join('lib','meta')
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    DRUG_CLASSES = ["opiates","dissociatives","psychedelics","stimulants","benzodiazepines","cannabinoids"]
+
   end
 end
