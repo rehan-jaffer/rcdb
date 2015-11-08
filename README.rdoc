@@ -1,5 +1,20 @@
 == Chemical Observer Project
 
+=== Requirements
+* Postgres >= 9.3 - due to use of hstore, upgrading to 9.4 is in the pipeline to be able to use jsonb over json type for performance reasons (largely due to indexing pubchem data)
+* Bower - Used to manage front-end dependencies, most easily installed via node package manager
+* Ruby 2.x
+
+=== Gems
+* simple_form_for - automagic form inference/generation for views
+* HAML - used for HTML layout files except in a few circumstances
+
+=== Some setup instructions
+* Running bower install will install the front-end dependencies
+
+=== NOTICE
+Anything below this line was written quite a while ago and might be outdated
+
 === Purpose
 
 To provide a collaborative platform for users to be able to compile available data on Research Chemicals/Legal Highs, along with predictive analysis of trends in usage, giving clinicians early warnings of current trends in the use of such drugs, and the most up to date information. Also to provide consumers of these substances with as much harm reduction information as possible.
@@ -22,10 +37,13 @@ This is still a very rough/messy project and needs refactoring and proper tests,
 
 == Features requiring implementation before prototype launch
 
-* Fix display in top right of button (overlaps text right now, text should either be moved down or button should be moved up)
 * Check for cross-browser compatibility
 * Rewrite JS into OO/clean format
-* Add "unrated" to harm/addiction ratings that have 0 votes
+* Change cursor on overlay of papers expansion link
+* Add controllers for dissociatives and opiates
+* Add more tests for basic functionality
+* Test in a range of resolutions
+* Save data-sets for raw and 'buy' versions in db form
 
 == Requirements for version 1.0
 
@@ -54,7 +72,6 @@ sandi_meter gem:
 * Add dashboards for various user types
 * Integrate content editing system with queueing
 * Implement paper relevance up/down-voting
-* Create temporary logo
 * Add placeholder content
 * Style papers tooltip to be wider (how to do this in a responsive fashion?)
 * Enable submission of consumer reports
