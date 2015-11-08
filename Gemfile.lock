@@ -166,7 +166,6 @@ GEM
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
     highline (1.7.8)
-    hiredis (0.6.0)
     html2haml (2.0.0)
       erubis (~> 2.7.0)
       haml (~> 4.0.0)
@@ -213,7 +212,6 @@ GEM
       equalizer (~> 0.0.9)
       ice_nine (~> 0.11.0)
       procto (~> 0.0.2)
-    msgpack (0.5.12)
     multi_json (1.11.2)
     multi_test (0.1.2)
     mutant (0.8.5)
@@ -235,14 +233,8 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (3.0.1)
     newrelic_rpm (3.14.0.305)
-    nido (1.0.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
-    ohm (2.3.0)
-      msgpack (~> 0.5.0)
-      nido
-      redic (~> 1.5.0)
-      stal
     orm_adapter (0.5.0)
     paperclip (4.3.1)
       activemodel (>= 3.2.0)
@@ -288,9 +280,6 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
-    redic (1.5.0)
-      hiredis
-    redis (3.2.1)
     ref (2.0.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
@@ -370,8 +359,6 @@ GEM
       colorize (>= 0.7.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    stal (0.1.0)
-      redic
     temple (0.7.6)
     terminal-table (1.5.2)
     therubyracer (0.12.2)
@@ -443,11 +430,9 @@ DEPENDENCIES
   microdata
   mutant
   newrelic_rpm
-  ohm
   paperclip
   pg
   rails (= 4.2.4)
-  redis
   rolify
   rspec-rails
   rubocop
