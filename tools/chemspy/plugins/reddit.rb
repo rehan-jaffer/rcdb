@@ -60,8 +60,8 @@ class RedditPlugin
 
       end
       {text: result["data"]["selftext"], title: result["data"]["title"], comments: comments.map { |comment|
-        {title: comment["data"]["title"], text: comment["data"]["selftext"], hash: hash(comment["data"]["title"]), source: "reddit"}
-      }, hash: hash, source: "reddit"}
+        {title: comment["data"]["title"], text: comment["data"]["selftext"], hash: hash(comment["data"]["title"] + comment["data"]["selftext"]), source: "reddit"}
+      }, hash: hash(result["data"]["title"] + result["data"]["selftext"]), source: "reddit"}
      }
 
      return data
