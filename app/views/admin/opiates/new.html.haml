@@ -1,0 +1,15 @@
+= simple_form_for([:admin, @drug_form]) do |f|
+  = f.input :primary_name
+  = f.input :research_chemical, as: :boolean
+  = f.input :description, as: :text
+  = f.input :molecule, as: :file
+  = f.input :trade_names
+  = f.input :harm_rating
+  = f.input :harm_votes
+  = f.input :addiction_rating
+  = f.input :addiction_votes
+  = f.input :paper_feed
+  = f.input :report_feed_url
+  = f.input :effects
+  = f.input :side_effects
+  = f.submit
