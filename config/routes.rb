@@ -21,10 +21,12 @@ Rails.application.routes.draw do
     resources :dissociatives
     resources :psychedelics
     resources :metabolites
+    resources :opiates
     resources :stimulants
     resources :dashboard
     resources :posts
     resources :keywords
+    resources :drug_forms
   end
 
   namespace :moderator do
