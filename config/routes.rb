@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :opiates, only: [:index, :show]
   resources :reports
   resources :home, :only => [:index]
+  resources :votes
   resources :drugs
   root to: "home#index"
 
