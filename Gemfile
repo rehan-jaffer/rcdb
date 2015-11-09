@@ -10,9 +10,12 @@ gem 'uglifier', '>= 1.3.0'
 
 # view-based libraries
 gem 'haml-rails'
-gem 'simple_form'
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
+
+# form-related
+gem 'simple_form'
+gem 'virtus'
 
 # Bower is used to manage front-end dependencies through the Bowerfile contained in the root directory
 gem 'bower-rails'
