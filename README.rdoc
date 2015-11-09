@@ -12,6 +12,16 @@
 === Some setup instructions
 * Running bower install will install the front-end dependencies
 
+=== Object/Model Map
+
+==== Drug
+A particular class of drug, defined by a fairly fuzzy set of categories with a set of attributes in common (e.g Benzodiazepines) is descended from the common drug class that dictates most of its behaviour. Descendents can add additional behaviours such as in the case of benzodiazepines where each should have a defined valium equivalent, as well as a set of hstore keys for the affinity field defining the neuroreceptor affinities.
+Drug classes are defined in the config/application.rb as an Array, each should have a corresponding controller and model class.
+Each Drug also has a set of relationships with a set of other objects:
+* Effects - both intended and unintended (side effects)
+* Votes - votes on properties such as harm rating and addiction_rating. While these specify a drug_id, the actual vote tally should be calculated every 12-24 hours
+* Localities - A set of entries defining the legality of the substance in a particular jurisdiction
+
 === NOTICE
 Anything below this line was written quite a while ago and might be outdated
 
