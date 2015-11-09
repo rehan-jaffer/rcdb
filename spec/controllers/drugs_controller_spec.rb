@@ -14,15 +14,6 @@ Rcdb::Application::DRUG_CLASSES.each do |drug|
 
   describe controller, :type => :controller do
 
-    before(:all) do
-
-      model = model_class.new
-      model.primary_name = "Generic #{model_name}"
-      model.description = "A generic drug description"
-      model.save
-
-    end
-
     describe "general properties" do
 
       it "is descended from DrugsController" do
