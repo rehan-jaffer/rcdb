@@ -9,6 +9,10 @@
 * simple_form_for - automagic form inference/generation for views
 * HAML - used for HTML layout files except in a few circumstances
 
+=== Testing
+* RSpec 3.x for unit/functional testing
+* Capybara for integration testing
+
 === Some setup instructions
 * Running bower install will install the front-end dependencies
 
@@ -21,6 +25,8 @@ Each Drug also has a set of relationships with a set of other objects:
 * Effects - both intended and unintended (side effects)
 * Votes - votes on properties such as harm rating and addiction_rating. While these specify a drug_id, the actual vote tally should be calculated every 12-24 hours
 * Localities - A set of entries defining the legality of the substance in a particular jurisdiction
+
+
 
 === NOTICE
 Anything below this line was written quite a while ago and might be outdated
