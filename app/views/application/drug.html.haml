@@ -43,7 +43,7 @@
       - unless @drug.harm_votes > 0
         .unrated-box
           UNRATED
-      .vote-button
+      .vote-button{data: {target: "harm", drug_id: "#{@drug.id}"}}
         [VOTE]
       .vote-count
         = "#{@drug.harm_votes} votes"
@@ -52,7 +52,7 @@
       - unless @drug.addiction_votes > 0
         .unrated-box
           UNRATED
-      .vote-button
+      .vote-button{data: {target: "addiction", drug_id: "#{@drug.id}"}}
         [VOTE]
       .vote-count
         = "#{@drug.addiction_votes} votes"
