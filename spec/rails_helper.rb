@@ -53,4 +53,23 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+
+  config.before(:all) do
+
+    Rcdb::Application::DRUG_CLASSES.each do |drug|
+
+      controller = DrugName.to_controller_class(drug)
+      model_class = DrugName.to_model_class(drug)
+      model_name = DrugName.to_model_name(drug)
+
+      model = model_class.new
+      model.primary_name = "Generic #{model_name}"
+      model.description = "A generic drug description"
+      model.save
+
+    end
+
+  end
+
 end
+
