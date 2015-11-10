@@ -5,10 +5,10 @@
 
 .row
   .col-md-12.col-lg-12.button-row
-    = link_to "Benzodiazepines", benzodiazepines_path, class: "btn-rounded-link"
-    = link_to "Stimulants", stimulants_path, class: "btn-rounded-link"
-    = link_to "Psychedelics", psychedelics_path, class: "btn-rounded-link"
-    = link_to "Dissociatives", benzodiazepines_path, class: "btn-rounded-link"
+    = link_to "Benzodiazepines (#{Benzodiazepine.count})", benzodiazepines_path, class: "btn-rounded-link"
+    = link_to "Stimulants (#{Stimulant.count})", stimulants_path, class: "btn-rounded-link"
+    = link_to "Psychedelics (#{Psychedelic.count})", psychedelics_path, class: "btn-rounded-link"
+    = link_to "Dissociatives (#{Dissociative.count})", dissociatives_path, class: "btn-rounded-link"
 
 
 .row
