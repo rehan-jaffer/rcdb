@@ -28,10 +28,26 @@ Rails.application.routes.draw do
     resources :posts
     resources :keywords
     resources :drug_forms
+
+    namespace :drugs do
+      resources :effects
+    end
+
   end
+
 
   namespace :moderator do
     resources :reports
+  end
+
+  namespace :api do
+
+    namespace :v1 do
+
+      resources :drugs
+
+    end
+
   end
 
   resources :alerts
