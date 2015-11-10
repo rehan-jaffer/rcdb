@@ -12,7 +12,7 @@ class Drug < ActiveRecord::Base
 
   include Drug::CitationParser
 
-  has_attached_file :molecule_image, :styles => {:medium => "300x200>", :thumb => "100x100#"}
+  has_attached_file :molecule_image, :styles => {:medium => "300x200>", :thumb => "100x100#"}, :default_url => "missing.png"
 
   validates_attachment :molecule_image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
   validates_presence_of :primary_name
