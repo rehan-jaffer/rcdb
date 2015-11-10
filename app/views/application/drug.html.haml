@@ -38,7 +38,7 @@
           Trade names:
           = display_trade_names(@drug.trade_names)
   .row
-    .col-md-4.col-lg-4.rating-box
+    .col-md-4.col-lg-4.rating-box#harm
       = rating_dial(@drug.harm_rating, "Harm Rating")
       - unless @drug.harm_votes > 0
         .unrated-box
@@ -47,7 +47,7 @@
         [VOTE]
       .vote-count
         = "#{@drug.harm_votes} votes"
-    .col-md-4.col-lg-4.rating-box
+    .col-md-4.col-lg-4.rating-box#addiction
       = rating_dial(@drug.addiction_rating, "Addiction Rating")
       - unless @drug.addiction_votes > 0
         .unrated-box
