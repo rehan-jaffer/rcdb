@@ -9,7 +9,7 @@ class VotesController < ApplicationController
     if vote.save
       render :json => {:response => "OK"}, status: 201
     else
-      render :json => {:response => vote.error_messages}, status: 400
+      render :json => {:response => vote.full_messages.to_json}, status: 400
     end
     return
   end
