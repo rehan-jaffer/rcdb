@@ -11,5 +11,10 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "homepage": "https://github.com/rehan-work/rcdb",
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "private": true
 }
