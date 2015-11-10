@@ -2,10 +2,9 @@ var dial = {
   trigger: $(".vote-button"),
   access_point: "/votes",
   setup: function() {
-    alert("setup fired!");
     return this.trigger.on("click", function() {
-      data_element = $("#"+$(this).data("target")+"_rating");
-      alert("clicked!");
+      rating_property = $(this).data("target");
+      data_element = $("#" + rating_property + "_rating");
       return $.ajax({
         url: "/votes",
         type: "POST",
@@ -15,8 +14,9 @@ var dial = {
                  quantity: data_element.val(),
                  property: $(this).data("target")}}
       }).success(function() {
-        // replace ratings box with a notice here
-        alert("success!");
+        // Use a JS template library here to replace the existing HTML with something worthwhile
+        $("#" + rating_property).html("Your vote has been submitted, votes are tallied every 24 hours.");
+//        alert("success!");
       }).fail(function() {
         // display the error in this case in a popup of some kind, growl-style notification?
         alert("failed!");
