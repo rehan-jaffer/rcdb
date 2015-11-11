@@ -109,3 +109,11 @@
   - unless @drug.fatalities.nil?
     .row.drug-fatalities-header
       %h3 Fatalities
+
+  = handlebars_template("voted-container") do
+    .voted-box
+      Your vote was added to the total, votes are collated once every 24 hours, and you can only vote once per drug per day.
+
+  = handlebars_template("failed-container") do
+    .voted-box
+      You may not vote more than once every 24 hours.
