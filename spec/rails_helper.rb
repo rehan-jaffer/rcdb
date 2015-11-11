@@ -7,6 +7,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'simplecov'
 require 'capybara/rspec'
+require 'database_cleaner'
 SimpleCov.start
 
 # Add additional requires below this line. Rails is not loaded until this point!
@@ -54,7 +55,11 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 
+  DatabaseCleaner.strategy = :truncation
+
   config.before(:all) do
+
+    DatabaseCleaner.clean
 
     Rcdb::Application::DRUG_CLASSES.each do |drug|
 
@@ -65,6 +70,8 @@ RSpec.configure do |config|
       model = model_class.new
       model.primary_name = "Generic #{model_name}"
       model.description = "A generic drug description"
+      model.side_effects = ""
+      model.effects = ""
       model.save
 
     end
