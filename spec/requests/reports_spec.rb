@@ -11,8 +11,8 @@ describe "Reports process", :type => :feature do
 
     it "displays a modal if I click the 'show reports' button" do
       visit "/cannabinoids/Generic%20Cannabinoid"
-      click_button "Submit Report"
-      expect(page).to have_selector("#submit-report-modal", visible: true)
+      click_link "Submit Report"
+      expect(page).to have_selector(".submit-report-modal", visible: true)
     end
 
   end
