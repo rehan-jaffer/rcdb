@@ -76,6 +76,7 @@ group :test do
   gem 'microdata'
   gem 'simplecov'
   gem 'selenium-webdriver'
+  gem 'capybara-webkit'
   gem 'database_cleaner'
 
 end
