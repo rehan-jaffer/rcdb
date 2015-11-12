@@ -2,4 +2,5 @@
   %td= benzodiazepine.primary_name
   %td
     = link_to "Edit", edit_admin_benzodiazepine_path(benzodiazepine)
+    = link_to "Effects", new_admin_drug_effect_path(benzodiazepine.primary_name)
     = link_to "Delete"
