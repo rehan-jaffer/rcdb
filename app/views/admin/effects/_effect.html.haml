@@ -1,0 +1,4 @@
+%tr
+  %td= effect.description
+  %td= effect.intended
+  %td= link_to "Delete", admin_drug_effect_path(id: effect.id), method: "DELETE", data: {remote: "true"}, class: "effects-delete-link"

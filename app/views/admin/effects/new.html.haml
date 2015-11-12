@@ -1,0 +1,9 @@
+%h1 Add Effects
+.events-container
+  %table.table.table-bordered
+    = render 'effects', object: @effects
+.events-form
+  = simple_form_for([:admin, @drug, @effect], remote: true, id: "drug-effects-form") do |f|
+    = f.input :description
+    = f.input :intended
+    = f.submit
