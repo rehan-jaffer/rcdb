@@ -18,4 +18,16 @@ Rcdb::Application::DRUG_CLASSES.each do |drug|
 
   class_name = DrugName::to_model_class(drug)
 
+  describe "drug class behaviour" do
+
+    it "parameterizes itself appropriately (using primary_name)" do
+
+      drug = class_name.new
+      drug.primary_name = "Generic Drug"
+      expect(drug.to_param).to eq "Generic Drug"
+
+    end
+
+  end
+
 end
