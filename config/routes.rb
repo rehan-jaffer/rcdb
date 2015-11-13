@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     resources :keywords
     resources :drug_forms
 
-    namespace :drugs do
+    resources :drugs do
       resources :effects
     end
 
