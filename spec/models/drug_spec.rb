@@ -12,6 +12,16 @@ RSpec.describe Drug, type: :model do
 
   end
 
+  it "returns an array of effects (desired)" do
+
+    @drug = Drug.new
+    @drug.primary_name = "Generic Drug"
+    @drug.save
+    expect(@drug.effects.class).to be Effect::ActiveRecord_Associations_CollectionProxy
+#    expect(@drug.side_effects.class).to be ActiveRecord::Relation
+
+  end
+
 end
 
 Rcdb::Application::DRUG_CLASSES.each do |drug|
