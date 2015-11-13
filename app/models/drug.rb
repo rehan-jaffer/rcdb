@@ -9,6 +9,7 @@ class Drug < ActiveRecord::Base
   has_many :localities
   has_many :references
   has_many :drugs
+  has_many :effects
 
   include Drug::CitationParser
 
@@ -22,7 +23,7 @@ class Drug < ActiveRecord::Base
 
   # this is a hacky fix
   def eliminate_empties
-    ["classes", "trade_names", "other_names", "side_effects", "solubility"].each do |field|
+    ["classes", "trade_names", "other_names", "solubility"].each do |field|
       unless send(field).nil?
         send(field).reject! { |item| item.empty? }
       end 
@@ -35,6 +36,10 @@ class Drug < ActiveRecord::Base
 
   def to_html
     LinkParser.parse(description).html_safe
+  end
+
+  def side_effects
+    @side_effects ||= Effect.where(:drug_id => id, intended: false)
   end
 
   def inception_date
