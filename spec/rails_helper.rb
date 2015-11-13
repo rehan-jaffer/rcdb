@@ -63,6 +63,8 @@ RSpec.configure do |config|
 
   DatabaseCleaner.strategy = :truncation
 
+  config.filter_run_excluding :broken => true
+
   config.before(:all) do
 
     DatabaseCleaner.clean
