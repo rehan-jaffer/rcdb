@@ -76,8 +76,6 @@ RSpec.configure do |config|
       model = model_class.new
       model.primary_name = "Generic #{model_name}"
       model.description = "A generic drug description"
-      model.side_effects = ""
-      model.effects = ""
       model.save
 
     end
