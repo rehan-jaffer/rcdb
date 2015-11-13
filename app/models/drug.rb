@@ -10,6 +10,7 @@ class Drug < ActiveRecord::Base
   has_many :references
   has_many :drugs
   has_many :effects
+  has_many :side_effects, -> { where(:intended => false) }, class_name: 'Effect'
 
   include Drug::CitationParser
 
@@ -36,10 +37,6 @@ class Drug < ActiveRecord::Base
 
   def to_html
     LinkParser.parse(description).html_safe
-  end
-
-  def side_effects
-    @side_effects ||= Effect.where(:drug_id => id, intended: false)
   end
 
   def inception_date
