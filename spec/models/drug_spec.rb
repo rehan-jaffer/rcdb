@@ -18,7 +18,7 @@ RSpec.describe Drug, type: :model do
     @drug.primary_name = "Generic Drug"
     @drug.save
     expect(@drug.effects.class).to be Effect::ActiveRecord_Associations_CollectionProxy
-#    expect(@drug.side_effects.class).to be ActiveRecord::Relation
+    expect(@drug.side_effects.class).to be Effect::ActiveRecord_Associations_CollectionProxy
 
   end
 
