@@ -12,6 +12,8 @@
 === Testing
 * RSpec 3.x for unit/functional testing
 * Capybara for integration testing
+* Capybara-webkit used for headless integration testing, note that this introduces a libqt5 dependency. In order to avoid this, comment out capybara-webkit in the Gemfile and replace it with selenium, and remove the following line in spec/rails_helper.rb: 
+  Capybara.javascript_driver = :webkit  
 
 === Some setup instructions
 * Running bower install will install the front-end dependencies
@@ -25,7 +27,8 @@ Each Drug also has a set of relationships with a set of other objects:
 * Effects - both intended and unintended (side effects)
 * Votes - votes on properties such as harm rating and addiction_rating. While these specify a drug_id, the actual vote tally should be calculated every 12-24 hours
 * Localities - A set of entries defining the legality of the substance in a particular jurisdiction
-
+==== A note on affinities
+The implementation using hstore seemed like a really great idea at the time and the code seemed really clever. It doesn't anymore, this should just be moved into a separate table. Was definitely trying to be too smart.
 
 
 === NOTICE
