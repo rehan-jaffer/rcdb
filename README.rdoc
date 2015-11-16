@@ -22,9 +22,11 @@
 * RSpec 3.x for unit/functional testing
 * Capybara for integration testing
 * Capybara-webkit used for headless integration testing (has resulted in being faster and easier to run on a test server), note that this introduces a libqt5 dependency. In order to avoid this, comment out capybara-webkit in the Gemfile and replace it with selenium, and remove the following line in spec/rails_helper.rb: 
+
 ```ruby
 Capybara.javascript_driver = :webkit  
 ```
+
 * Mutant for mutation testing, test quality of tests.
 * DatabaseCleaner for wiping the Test database between test runs
 
