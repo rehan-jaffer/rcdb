@@ -1,9 +1,12 @@
 == Chemical Observer Project
 
 === Requirements
-* Postgres >= 9.3 - due to use of hstore, upgrading to 9.4 is in the pipeline to be able to use jsonb over json type for performance reasons (largely due to indexing pubchem data)
+* Postgres >= 9.3 - due to use of hstore, upgrading to 9.4 is in the pipeline to be able to use jsonb over json type for performance reasons (largely due to indexing pubchem data). Given that Postgres 9.5 is out, consider upgrading.
 * Bower - Used to manage front-end dependencies, most easily installed via node package manager
 * Ruby 2.x
+
+=== Deployment Pipeline
+* Currently deployment is done through Codeship and Capistrano, if you're using the code in development you probably want to comment out the gems related to capistrano as the Capfile is not in the repo
 
 === Gems
 * simple_form_for - automagic form inference/generation for views
@@ -12,8 +15,23 @@
 === Testing
 * RSpec 3.x for unit/functional testing
 * Capybara for integration testing
-* Capybara-webkit used for headless integration testing, note that this introduces a libqt5 dependency. In order to avoid this, comment out capybara-webkit in the Gemfile and replace it with selenium, and remove the following line in spec/rails_helper.rb: 
-  Capybara.javascript_driver = :webkit  
+* Capybara-webkit used for headless integration testing (has resulted in being faster and easier to run on a test server), note that this introduces a libqt5 dependency. In order to avoid this, comment out capybara-webkit in the Gemfile and replace it with selenium, and remove the following line in spec/rails_helper.rb: 
+```ruby
+Capybara.javascript_driver = :webkit  
+```
+
+=== Forms
+* JavaScript needs to be added for adding extra Array items to the forms, and the hacky fix that checks for Array fields and populates empty ones needs to be eliminated. It's a source of bugs any time the models change, point of failure (contained in the Drug model)
+
+=== Rake Tasks
+==== Papers
+* papers:scrape will run for each pubmed RSS feed supplied and pull the contents into the database. At present paper URLs have to be manually entered, but there should be a way to obtain the XML/RSS feed URL programmatically since we're really just looking at grabbing the title in a search query. Mechanize can be used if necessary, but probably isn't required.
+==== PubChem
+* Will check for all entries that have a 'cid' (pubchem ID) present and pull the relevant JSON data into the database where possible. This needs to be updated to pull more relevant pubchem data, as at present it's not really providing any useful extra information, better understanding of pubchem API is required.
+==== Sitemap
+* Running sitemap:generate will create an XML sitemap for each drug entry and for the relevant listing page, to aid with google's indexing
+==== Google Trends
+* drugs:populate_data scrapes the Google Trends API (it's not exactly scraping, the same page request is used that's used with any request, and the JSON data is parsed out). This needs to be refactored to use the same dataset rather than repeating the request 3 times, as Google detects the pattern and rate-limits pretty quickly. It doesn't ban clients, but this makes it pretty difficult to obtain data for a large quantity of substances.
 
 === Some setup instructions
 * Running bower install will install the front-end dependencies
