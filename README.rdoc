@@ -4,6 +4,7 @@
 * Postgres >= 9.3 - due to use of hstore, upgrading to 9.4 is in the pipeline to be able to use jsonb over json type for performance reasons (largely due to indexing pubchem data). Given that Postgres 9.5 is out, consider upgrading.
 * Bower - Used to manage front-end dependencies, most easily installed via node package manager
 * Ruby 2.x
+* Currently using plain JavaScript rather than ES6 through a transpiler, since the latter is harder to debug on a larger scale.
 
 === Deployment Pipeline
 * Currently deployment is done through Codeship and Capistrano, if you're using the code in development you probably want to comment out the gems related to capistrano as the Capfile is not in the repo
@@ -11,6 +12,11 @@
 === Gems
 * simple_form_for - automagic form inference/generation for views
 * HAML - used for HTML layout files except in a few circumstances
+* twitter-bootstrap - The gem has a lot of advantages over using it via Bower, since it plugs easily into the rest of the Rails ecosystem pretty nicely.
+
+=== Other Libraries
+* Underscore - Swiss toolkit for iterating, minimal footprint
+* Handlebars - Lightweight templating library to make things a little easier, avoided adding another gem to the Rails dependencies by using Bower to manage it and adding the handlebars_template(id) helper, allows the writing of handlebar templates in HAML easily
 
 === Testing
 * RSpec 3.x for unit/functional testing
