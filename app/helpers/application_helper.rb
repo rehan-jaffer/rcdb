@@ -36,7 +36,7 @@ module ApplicationHelper
     content_tag(:ul,
     effects.map { |effect|
       content_tag(:li,
-        effect,
+        effect.description,
       class: "drug-side-effect")
     }.join("\r\n").html_safe,
     class: "drug-side-effects").html_safe
