@@ -54,6 +54,19 @@ Each Drug also has a set of relationships with a set of other objects:
 ==== A note on affinities
 The implementation using hstore seemed like a really great idea at the time and the code seemed really clever. It doesn't anymore, this should just be moved into a separate table. Was definitely trying to be too smart.
 
+=== API
+
+==== V1
+* Drug lookup via name only, provide simple JSON data back
+
+==== V2
+* Allow searching by side effect, secondary data
+
+=== Security Testing
+This desperately needs doing before the project goes public. sqlmap for various exploit vectors, along with RSpec-based testing for non-users being able to edit things they shouldn't, or submit data they shouldn't.
+
+=== Additional Features (added as they're thought up)
+* Potenti
 
 === NOTICE
 Anything below this line was written quite a while ago and might be outdated
