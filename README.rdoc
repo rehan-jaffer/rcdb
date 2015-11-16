@@ -25,6 +25,8 @@
 ```ruby
 Capybara.javascript_driver = :webkit  
 ```
+* Mutant for mutation testing, test quality of tests.
+* DatabaseCleaner for wiping the Test database between test runs
 
 === Forms
 * JavaScript needs to be added for adding extra Array items to the forms, and the hacky fix that checks for Array fields and populates empty ones needs to be eliminated. It's a source of bugs any time the models change, point of failure (contained in the Drug model)
@@ -65,8 +67,14 @@ The implementation using hstore seemed like a really great idea at the time and 
 === Security Testing
 This desperately needs doing before the project goes public. sqlmap for various exploit vectors, along with RSpec-based testing for non-users being able to edit things they shouldn't, or submit data they shouldn't.
 
+=== Notes
+* This design isn't responsive, it needs to be, but it's a feature that'll have to be added over time. The UI works, that's been the priority, responding to screen types is the next step.
+* Accessibility testing needs to be added. There's a gem for this, you've used it before, dig up that project code and find out how you did it.
+* Metabolic enzymes need to be added in some capacity, model this and figure out how to do it and avoid the prior mistakes of shoving too much into the drug model
+
 === Additional Features (added as they're thought up)
-* Potenti
+* Potentially use GeoIP to set the user's location in session/cookie
+
 
 === NOTICE
 Anything below this line was written quite a while ago and might be outdated
