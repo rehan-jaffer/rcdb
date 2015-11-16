@@ -35,9 +35,9 @@
 ==== Papers
 * papers:scrape will run for each pubmed RSS feed supplied and pull the contents into the database. At present paper URLs have to be manually entered, but there should be a way to obtain the XML/RSS feed URL programmatically since we're really just looking at grabbing the title in a search query. Mechanize can be used if necessary, but probably isn't required.
 ==== PubChem
-* Will check for all entries that have a 'cid' (pubchem ID) present and pull the relevant JSON data into the database where possible. This needs to be updated to pull more relevant pubchem data, as at present it's not really providing any useful extra information, better understanding of pubchem API is required.
+* pubchem:harvest Will check for all entries that have a 'cid' (pubchem ID) present and pull the relevant JSON data into the database where possible. This needs to be updated to pull more relevant pubchem data, as at present it's not really providing any useful extra information, better understanding of pubchem API is required.
 ==== Sitemap
-* Running sitemap:generate will create an XML sitemap for each drug entry and for the relevant listing page, to aid with google's indexing
+* sitemap:generate will create an XML sitemap for each drug entry and for the relevant listing page, to aid with google's indexing
 ==== Google Trends
 * drugs:populate_data scrapes the Google Trends API (it's not exactly scraping, the same page request is used that's used with any request, and the JSON data is parsed out). This needs to be refactored to use the same dataset rather than repeating the request 3 times, as Google detects the pattern and rate-limits pretty quickly. It doesn't ban clients, but this makes it pretty difficult to obtain data for a large quantity of substances.
 
