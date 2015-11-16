@@ -9,7 +9,7 @@ class Drug < ActiveRecord::Base
   has_many :localities
   has_many :references
   has_many :drugs
-  has_many :effects
+  has_many :effects, -> { where(:intended => true) }, class_name: 'Effect'
   has_many :side_effects, -> { where(:intended => false) }, class_name: 'Effect'
 
   include Drug::CitationParser
