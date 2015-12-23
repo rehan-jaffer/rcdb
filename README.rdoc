@@ -1,10 +1,18 @@
 == Chemical Observer Project
 
+=== UPDATE 24/12/2015
+
+* Beginning a major refactoring of the codebase including updating the test quality and coverage, as well as integrating angularjs
+
 === Requirements
 * Postgres >= 9.3 - due to use of hstore, upgrading to 9.4 is in the pipeline to be able to use jsonb over json type for performance reasons (largely due to indexing pubchem data). Given that Postgres 9.5 is out, consider upgrading.
 * Bower - Used to manage front-end dependencies, most easily installed via node package manager
 * Ruby 2.x
 * Currently using plain JavaScript rather than ES6 through a transpiler, since the latter is harder to debug on a larger scale.
+
+=== Potential Architecture Choices
+* Refactor out the API into a separate project.
+
 
 === Deployment Pipeline
 * Currently deployment is done through Codeship and Capistrano, if you're using the code in development you probably want to comment out the gems related to capistrano as the Capfile is not in the repo
