@@ -4,6 +4,14 @@
 
 * Beginning a major refactoring of the codebase including updating the test quality and coverage, as well as integrating angularjs
 
+==== Changes Required
+
+* Refactor affinities into separate table
+* Ensure HTML5 validity
+* Make use of factories to speed up test suite
+* Set up auto-testing
+* Upgrade to use 9.4
+
 === Requirements
 * Postgres >= 9.3 - due to use of hstore, upgrading to 9.4 is in the pipeline to be able to use jsonb over json type for performance reasons (largely due to indexing pubchem data). Given that Postgres 9.5 is out, consider upgrading.
 * Bower - Used to manage front-end dependencies, most easily installed via node package manager
