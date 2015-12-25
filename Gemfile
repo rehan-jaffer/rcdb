@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 gem 'pg'
@@ -22,8 +21,8 @@ gem 'bower-rails'
 
 gem 'paperclip'
 #gem 'turbolinks'
-gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0', group: :doc
+#gem 'jbuilder', '~> 2.0'
+#gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'active_record-acts_as'
 
 # User auth and resource management libraries
@@ -31,8 +30,12 @@ gem 'devise'
 gem 'rolify'
 gem 'cancancan'
 
+gem 'stackprof'
+gem 'rack-mini-profiler'
+gem 'flamegraph'
+
 # You can comment out the following in order to avoid the newrelic profiling dependency, which you most likely won't need unless you're trying to optimize queries
-gem 'newrelic_rpm'
+# gem 'newrelic_rpm'
 
 # JS environment, can be swapped out for your one of choice
 gem 'therubyracer'
@@ -45,8 +48,8 @@ gem 'therubyracer'
 # sandi_meter - code metric analysis tool based on the concepts described in Sandi's book on Ruby OO Programming
 
 gem 'rubocop'
-gem 'traceroute'
-gem 'bullet'
+# gem 'traceroute'
+# gem 'bullet'
 gem 'brakeman'
 gem 'deadweight'
 gem 'sandi_meter'
@@ -75,7 +78,7 @@ group :test do
   gem 'capybara'
   gem 'microdata'
   gem 'simplecov'
-  gem 'selenium-webdriver'
+#  gem 'selenium-webdriver'
   gem 'capybara-webkit'
   gem 'database_cleaner'
 
