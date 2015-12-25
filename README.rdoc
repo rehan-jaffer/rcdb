@@ -6,6 +6,8 @@
 
 ==== Updates
 * RSpec now runs test suite once per *complete* run, not per test suite. Overall execution time reduced from 2 minutes to 13 seconds
+* Removed gems not currently in use to reduce overhead
+* Rack-mini-profiler with flamegraphs added
 
 ==== Changes Required
 
