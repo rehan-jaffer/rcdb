@@ -4,6 +4,9 @@
 
 * Beginning a major refactoring of the codebase including updating the test quality and coverage, as well as integrating angularjs
 
+==== Updates
+* RSpec now runs test suite once per *complete* run, not per test suite. Overall execution time reduced from 2 minutes to 13 seconds
+
 ==== Changes Required
 
 * Refactor affinities into separate table
