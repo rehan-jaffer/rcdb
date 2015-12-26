@@ -1,3 +1,4 @@
 asset 'underscore'
 asset 'fontawesome'
 asset 'handlebars'
+asset 'angular2'
