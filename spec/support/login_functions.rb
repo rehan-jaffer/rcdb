@@ -15,6 +15,6 @@ def login_as(user_type)
     click_button "Log in"
   end
 
-  puts page.body
+  return !(page.current_url == new_user_session_path)
 
 end
