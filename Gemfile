@@ -59,6 +59,8 @@ gem 'sandi_meter'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
+# gem 'airbrake-ruby'
+# gem 'airbrake'
 
 # With the exception of seed_dump these can all be commented out if you're not deploying code to the production or staging servers, seed_dump itself is used to dump db data in an ActiveRecord-friendly format, so if you're not doing that you can comment that out too
 group :development do
