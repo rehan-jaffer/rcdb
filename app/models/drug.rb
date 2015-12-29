@@ -2,6 +2,7 @@ class Drug < ActiveRecord::Base
 
   actable
   resourcify
+  has_many :affinities
   has_many :resources
   has_many :papers
   has_many :reports
@@ -49,6 +50,10 @@ class Drug < ActiveRecord::Base
 
   def inception_month
     self.start_date.strftime("%B")
+  end
+
+  def self.receptor_list
+    []
   end
 
 end

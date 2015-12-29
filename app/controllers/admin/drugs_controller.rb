@@ -37,6 +37,14 @@ class Admin::DrugsController < Admin::AdminController
     @drugs = class_type.all
   end
 
+  def class_type
+    Drug
+  end
+
+  def class_name
+    "drug"
+  end
+
   def drug_attributes
     [:cid, :harm_votes, :harm_rating, :addiction_rating, :addiction_votes, :molecule_image, :molecule_image_source, :id, :primary_name, :description, :half_life, :full_name, :paper_feed, :onset, trade_names: [], other_names: [], classes: [], solubility: [], side_effects: []]
   end
