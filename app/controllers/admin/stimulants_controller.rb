@@ -9,7 +9,7 @@ class Admin::StimulantsController < Admin::DrugsController
   end
 
   def stimulants_attributes
-    params.require(:stimulant).permit(drug_attributes | [affinity: Stimulant.stored_attributes[:affinity]])
+    params.require(:stimulant).permit(drug_attributes_list | [affinity: Stimulant.stored_attributes[:affinity]])
   end
 
 end
