@@ -9,7 +9,7 @@ class Admin::BenzodiazepinesController < Admin::DrugsController
   end
 
   def benzodiazepine_attributes
-    params.require(:benzodiazepine).permit(drug_attributes | [:valium_equiv, affinity: Benzodiazepine.stored_attributes[:affinity]])
+    params.require(:benzodiazepine).permit(drug_attributes_list | [:valium_equiv, affinity: Benzodiazepine.stored_attributes[:affinity]])
   end
 
 end
