@@ -9,7 +9,7 @@ class Admin::DissociativesController < Admin::DrugsController
   end
 
   def dissociative_attributes
-    params.require(:dissociative).permit(drug_attributes | [affinity: Dissociative.stored_attributes[:affinity]])
+    params.require(:dissociative).permit(drug_attributes_list | [affinity: Dissociative.stored_attributes[:affinity]])
   end
 
 end
