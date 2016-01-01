@@ -1,119 +1,115 @@
-%article{:itemscope=>"", :itemtype=>"http://schema.org/Drug", class: "drug-container #{@drug.class_type}-container"}
-  .row
-    .col-lg-12.col-md-12
-      %h5.drug-class-type{:itemprop=>"drugClass"}= @drug.class_type.capitalize
-  .row.drug-info-row
-    .col-lg-4.col-md-4.drug-image
-      - unless @drug.molecule_image.nil?
-        = image_tag(@drug.molecule_image(:medium), itemprop: "image")
-        - if @drug.respond_to?(:molecule_image_source)
-          %em= @drug.molecule_image_source
-    .col-lg-8.col-md-8
-      %h2.drug-primary-name{:itemprop=>"name"}= @drug.primary_name
-      %h4.drug-full-name{:itemprop=>"alternateName"}= @drug.full_name
-  .row
-    .col-lg-6.col-md-6
-      - unless @drug.side_effects.empty?
-        %h4.side-effects-header Side Effects
-        = display_side_effects(@drug.side_effects)
-      - unless @drug.effects.empty?
-        %h4.effects-header Effects
-        = display_side_effects(@drug.effects)
-    .col-lg-6.col-md-6
-      %h4.data-header Extra Data
-      - unless @drug.other_names.empty?
-        %h4.drug-other-names
-          Other names:
-          = display_other_names(@drug.other_names)
-      - unless @drug.classes.empty?
-        %h4
-          Classes:
-          = display_other_names(@drug.classes)
-      - unless @drug.solubility.empty?
-        %h4
-          Solubility:
+%main
+  %article{:itemscope=>"", :itemtype=>"http://schema.org/Drug", class: "drug-container #{@drug.class_type}-container"}
+    .row
+      .col-lg-12.col-md-12
+        %h5.drug-class-type{:itemprop=>"drugClass"}= @drug.class_type.capitalize
+    .row.drug-info-row
+      .col-lg-4.col-md-4.drug-image
+        - unless @drug.molecule_image.nil?
+          = image_tag(@drug.molecule_image(:medium), itemprop: "image")
+          - if @drug.respond_to?(:molecule_image_source)
+            %em= @drug.molecule_image_source
+      .col-lg-8.col-md-8
+        %h2.drug-primary-name{:itemprop=>"name"}= @drug.primary_name
+        %h4.drug-full-name{:itemprop=>"alternateName"}= @drug.full_name
+    .row
+      .col-lg-6.col-md-6
+        - unless @drug.side_effects.empty?
+          %h4.side-effects-header Side Effects
+          = display_side_effects(@drug.side_effects)
+        - unless @drug.effects.empty?
+          %h4.effects-header Effects
+          = display_side_effects(@drug.effects)
+      .col-lg-6.col-md-6
+        %h4.data-header Extra Data
+        - unless @drug.other_names.empty?
+          %h4.drug-other-names
+            Other names:
+            = display_other_names(@drug.other_names)
+        - unless @drug.classes.empty?
+          %h4 Classes:
+            = display_other_names(@drug.classes)
+        - unless @drug.solubility.empty?
+          %h4 Solubility:
           = display_other_names(@drug.solubility)
-      - unless @drug.trade_names.empty?
-        %h4
-          Trade names:
-          = display_trade_names(@drug.trade_names)
-  .row
-    .col-md-4.col-lg-4.rating-box#harm
-      = rating_dial(@drug.harm_rating, "Harm Rating")
-      - unless @drug.harm_votes > 0
-        .unrated-box
-          UNRATED
-      .vote-button{data: {target: "harm", drug_id: "#{@drug.id}"}}
-        [VOTE]
-      .vote-count
-        = "#{@drug.harm_votes} votes"
-    .col-md-4.col-lg-4.rating-box#addiction
-      = rating_dial(@drug.addiction_rating, "Addiction Rating")
-      - unless @drug.addiction_votes > 0
-        .unrated-box
-          UNRATED
-      .vote-button{data: {target: "addiction", drug_id: "#{@drug.id}"}}
-        [VOTE]
-      .vote-count
-        = "#{@drug.addiction_votes} votes"
-    - unless @drug.start_date.nil?
+        - unless @drug.trade_names.empty?
+          %h4 Trade names:
+            = display_trade_names(@drug.trade_names)
+    .row
+      .col-md-4.col-lg-4.rating-box#harm
+        = rating_dial(@drug.harm_rating, "Harm Rating")
+        - unless @drug.harm_votes > 0
+          .unrated-box
+            UNRATED
+        .vote-button{data: {target: "harm", drug_id: "#{@drug.id}"}}
+          [VOTE]
+        .vote-count
+          = "#{@drug.harm_votes} votes"
+      .col-md-4.col-lg-4.rating-box#addiction
+        = rating_dial(@drug.addiction_rating, "Addiction Rating")
+        - unless @drug.addiction_votes > 0
+          .unrated-box
+            UNRATED
+        .vote-button{data: {target: "addiction", drug_id: "#{@drug.id}"}}
+          [VOTE]
+        .vote-count
+          = "#{@drug.addiction_votes} votes"
+      - unless @drug.start_date.nil?
+        .col-md-4.col-lg-4.rating-box
+          %h3.rating-header Estimated First Appearance
+          = styled_panel_helper(@drug.inception_year, @drug.inception_month)
+    - if @drug.respond_to?(:valium_equiv)
       .col-md-4.col-lg-4.rating-box
-        %h3.rating-header Estimated First Appearance
-        = styled_panel_helper(@drug.inception_year, @drug.inception_month)
-  - if @drug.respond_to?(:valium_equiv)
-    .col-md-4.col-lg-4.rating-box
-      %h3.rating-header Diazepam Equivalence
-      = styled_panel_helper("1mg", "#{@drug.valium_equiv}mg diazepam")
-
-  .row
-    %h4.description-header Description
-    %blockquote.drug-description
-      %section{:itemprop=>"description"}= @drug.to_html
-
-  .row
-    %h4.drug-trend-header Demand trend graph
-    = display_google_trends_graph(@drug.primary_name)
-  .row
-    = render 'reports', :reports => @drug.reports, :drug_id => @drug.id
-
-  .row
-    - unless @drug.affinity.nil?
-      %h3.drug-receptor-header Receptor Affinity
-      %table.table.table-bordered.table-striped.col-lg-6
-        %thead
-          %td 
-            %strong Receptor Subtype
-          %td 
-            %strong Binding Affinity
-        - @drug.affinity.keys.each do |bkey|
-          - unless @drug.affinity[bkey].empty?
-            %tr.receptor-row
-              %td.receptor-name.col-lg-3= bkey
-              %td.receptor-value.col-lg-3= @drug.affinity[bkey]
-
-  - unless @drug.papers.empty?
+        %h3.rating-header Diazepam Equivalence
+        = styled_panel_helper("1mg", "#{@drug.valium_equiv}mg diazepam")
     .row
-      %h3.drug-paper-header 
-        %span.paper-toggle 
-          %i.fa.fa-file-o
-          +
-        Papers
-      .papers-container.col-md-12.col-lg-12
-        %table.table.table-bordered.table-zebra
-          = render @drug.papers
-
-  - unless @drug.articles.nil?
+      %h4.description-header Description
+      %blockquote.drug-description
+        %section{:itemprop=>"description"}= @drug.to_html
     .row
-      %h3.drug-articles-header Articles
+      %h4.drug-trend-header Demand trend graph
+      = display_google_trends_graph(@drug.primary_name)
+    .row
+      = render 'reports', :reports => @drug.reports, :drug_id => @drug.id
 
-  - unless @drug.fatalities.nil?
-    .row.drug-fatalities-header
-      %h3 Fatalities
+    .row
+      - unless @drug.affinity.nil?
+        %h3.drug-receptor-header Receptor Affinity
+        %table.table.table-bordered.table-striped.col-lg-6
+          %thead
+            %td 
+              %strong Receptor Subtype
+            %td 
+              %strong Binding Affinity
+          - @drug.affinity.keys.each do |bkey|
+            - unless @drug.affinity[bkey].empty?
+              %tr.receptor-row
+                %td.receptor-name.col-lg-3= bkey
+                %td.receptor-value.col-lg-3= @drug.affinity[bkey]
 
-  = handlebars_template("voted-container") do
-    .voted-box
-      Your vote was added to the total, votes are collated once every 24 hours, and you can only vote once per drug per day.
+    - unless @drug.papers.empty?
+      .row
+        %h3.drug-paper-header 
+          %span.paper-toggle 
+            %i.fa.fa-file-o
+            +
+          Papers
+        .papers-container.col-md-12.col-lg-12
+          %table.table.table-bordered.table-zebra
+            = render @drug.papers
 
-  = handlebars_template("failed-container") do
-    .voted-box
-      You may not vote more than once every 24 hours.
+    - unless @drug.articles.nil?
+      .row
+        %h3.drug-articles-header Articles
+
+    - unless @drug.fatalities.nil?
+      .row.drug-fatalities-header
+        %h3 Fatalities
+
+    = handlebars_template("voted-container") do
+      .voted-box
+        Your vote was added to the total, votes are collated once every 24 hours, and you can only vote once per drug per day.
+
+    = handlebars_template("failed-container") do
+      .voted-box
+        You may not vote more than once every 24 hours.
