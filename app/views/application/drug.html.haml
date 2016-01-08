@@ -1,9 +1,9 @@
 %main
-  %article{:itemscope=>"", :itemtype=>"http://schema.org/Drug", class: "drug-container #{@drug.class_type}-container"}
+  %article{:itemscope=>"", :itemtype=>"http://schema.org/Drug", class: "drug-container #{@drug.class_type}-container plain-container"}
     .row
-      .col-lg-12.col-md-12
+      .col-lg-12.col-md-12#drug_class
         %h5.drug-class-type{:itemprop=>"drugClass"}= @drug.class_type.capitalize
-    .row.drug-info-row
+    .row.drug-info-row#drug_info
       .col-lg-4.col-md-4.drug-image
         - unless @drug.molecule_image.nil?
           = image_tag(@drug.molecule_image(:medium), itemprop: "image")
@@ -13,7 +13,7 @@
         %h2.drug-primary-name{:itemprop=>"name"}= @drug.primary_name
         %h4.drug-full-name{:itemprop=>"alternateName"}= @drug.full_name
     .row
-      .col-lg-6.col-md-6
+      .col-lg-6.col-md-6#drug_effects
         - unless @drug.side_effects.empty?
           %h4.side-effects-header Side Effects
           = display_side_effects(@drug.side_effects)
@@ -35,7 +35,7 @@
         - unless @drug.trade_names.empty?
           %h4 Trade names:
             = display_trade_names(@drug.trade_names)
-    .row
+    .row#drug_ratings
       .col-md-4.col-lg-4.rating-box#harm
         = rating_dial(@drug.harm_rating, "Harm Rating")
         - unless @drug.harm_votes > 0
@@ -62,17 +62,17 @@
       .col-md-4.col-lg-4.rating-box
         %h3.rating-header Diazepam Equivalence
         = styled_panel_helper("1mg", "#{@drug.valium_equiv}mg diazepam")
-    .row
+    .row#drug_description
       %h4.description-header Description
       %blockquote.drug-description
         %section{:itemprop=>"description"}= @drug.to_html
-    .row
+    .row#drug_demand_graph
       %h4.drug-trend-header Demand trend graph
       = display_google_trends_graph(@drug.primary_name)
-    .row
+    .row#drug_reports
       = render 'reports', :reports => @drug.reports, :drug_id => @drug.id
 
-    .row
+    .row#drug_receptor_affinities
       - unless @drug.affinity.nil?
         %h3.drug-receptor-header Receptor Affinity
         %table.table.table-bordered.table-striped.col-lg-6
@@ -88,7 +88,7 @@
                 %td.receptor-value.col-lg-3= @drug.affinity[bkey]
 
     - unless @drug.papers.empty?
-      .row
+      .row#drug_papers
         %h3.drug-paper-header 
           %span.paper-toggle 
             %i.fa.fa-file-o
@@ -99,7 +99,7 @@
             = render @drug.papers
 
     - unless @drug.articles.nil?
-      .row
+      .row#drug_articles
         %h3.drug-articles-header Articles
 
     - unless @drug.fatalities.nil?
